@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Kotoba Studio"/>
 <link rel="manifest" href="manifest.webmanifest"/>
 <link rel="apple-touch-icon" href="icon-192.png"/>
-<title>Kotoba Studio v4.4.0 — 音楽制作</title>
+<title>Kotoba Studio v4.5.0 — 音楽制作</title>
 <style>
 :root{--bg:#0b0d12;--panel:#141821;--panel2:#1b202b;--line:#2d3442;--text:#f5f7fa;--sub:#9aa6b8;--accent:#7ad7ff;--danger:#ff6f7d;--ok:#86e39b;--cellW:30px;--cellH:24px;--keysW:74px}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -189,12 +189,23 @@ body.detailActive.showTracks #tracksCard{display:block!important}
 @media(max-width:760px){.touchWorkbench{padding:9px}.touchModeBar{gap:7px}.touchPills{width:100%;justify-content:flex-start}.touchPills button{font-size:12px;min-height:44px;padding:7px}.touchControlRow{gap:8px}.touchDpadGroup{min-width:0;padding:9px;flex:0 0 calc(50% - 4px)}.touchDpad{grid-template-columns:repeat(3,40px);grid-template-rows:repeat(3,44px);gap:3px}.touchDpad button,.touchDpad .dpadCenter{min-width:40px}.touchSelectedInfo{flex-basis:100%}.editorCard.workbenchMode .arrangementOverview{max-height:135px}}
 @media(max-width:370px){.touchDpad{grid-template-columns:repeat(3,36px);grid-template-rows:repeat(3,43px);gap:2px}.touchDpad button,.touchDpad .dpadCenter{min-width:36px;min-height:43px}.touchGroupTitle strong{font-size:12px}}
 
+
+/* Studio 4.5 — finger-first navigation, vocal pitch bridge, live mixing */
+.studioTabs{flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch}.studioTabs::-webkit-scrollbar{display:none}.studioTabs button{min-width:130px;flex:1 0 auto;white-space:nowrap;min-height:46px}.studioTabs{scroll-snap-type:x proximity}.studioTabs button{scroll-snap-align:center}
+@media(max-width:900px){.studioTabs button{min-width:145px;font-size:13px;padding:9px 12px}}
+.studioViewSwitch{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:#152b3d;border:1px solid #5486a5;border-radius:14px;padding:11px 14px;position:sticky;top:66px;z-index:16;box-shadow:0 9px 16px #070b1099;margin-bottom:5px}
+.studioViewSwitch>div:first-child{display:grid;gap:3px}.studioViewSwitch strong{font-size:17px;color:#d4f2ff}.studioViewSwitch span{color:#b6c9d8;font-size:12px}.viewSwitchButtons{display:flex;gap:6px;flex-wrap:wrap}.viewSwitchButtons button{min-height:46px;border-radius:11px}.studioViewSwitch button.currentView{background:#ebf9ff;color:#0b2231;border:1px solid #bdeaff}
+#studioCompose .editorCard{scroll-margin-top:130px}#studioCompose #editorTop{scroll-margin-top:135px}#recordCard{scroll-margin-top:145px}
+#arrangeMelodyCard{border:1px solid #354f65}#arrangeMelodyCard h2{margin:0 0 5px}#arrangeMelodyCard .studioSectionHead{align-items:flex-start}.arrangeRecordLine{display:flex;align-items:end;flex-wrap:wrap;gap:7px;margin:13px 0}.arrangeRecordLine>*{min-height:46px}.arrangeRecordLine select{min-width:150px}.pitchPlotHeader{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:12px 0 8px;color:#d5ebf9}.pitchPlotScroll{width:100%;overflow-x:auto;overflow-y:hidden;border:1px solid #39546a;border-radius:12px;background:#101b29;touch-action:pan-x; -webkit-overflow-scrolling:touch}.pitchPlotScroll svg{display:block;min-width:800px;width:100%;height:auto;max-height:260px}.pitchPlotScroll [data-pitch-note]{cursor:pointer;touch-action:manipulation}.pitchPlotScroll [data-pitch-note]:focus{outline:3px solid white}.plotLegend{font-size:12px;color:#aec1d1;margin-top:7px;line-height:1.6}
+.mixTransport{position:sticky;top:67px;z-index:16;border-radius:13px;padding:12px 14px;background:#132b3b;border:1px solid #639abb;box-shadow:0 12px 24px #04080d99;display:grid;gap:8px;margin-bottom:12px}.mixTransportTop{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.mixTransportTop button{min-height:50px}.mixTransportTop strong{font-variant-numeric:tabular-nums;font-size:19px;color:#b5e9ff}.mixTransportTop .muted{flex:1 1 230px}.mixSeekLabel{font-weight:750!important;color:#d5f2ff!important}.mixSeekLabel input{width:100%;padding:0;accent-color:#6bd7ff;touch-action:pan-x}.mixTransportNote{font-size:11px;color:#b0c6d7;margin:0;line-height:1.5}
+.mixChannel{gap:8px}.mixHeader{display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap}.mixKnobDeck{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;padding:10px 8px;background:#0f1924;border:1px solid #354a5f;border-radius:12px}.mixKnobCard{display:grid;gap:5px;justify-items:center;min-width:82px;flex:1 1 82px}.mixKnobCard label{font-size:12px;font-weight:750;color:#d1e9f9;white-space:nowrap}.rotaryKnob{position:relative;width:67px;height:67px;min-height:67px;border-radius:50%;border:3px solid #617c92;background:radial-gradient(circle at 32% 25%,#415970,#1b2939 75%);box-shadow:inset 0 -5px 10px #070d1585,0 2px 5px #0009;touch-action:none;cursor:ns-resize;user-select:none;padding:0;outline-offset:3px}.rotaryKnob::before{content:'';position:absolute;inset:7px;border:1px solid #7c9bac55;border-radius:50%}.knobTick{position:absolute;top:7px;left:calc(50% - 2px);width:4px;height:19px;border-radius:4px;background:#88dfff;transform-origin:2px 25px;transform:rotate(var(--rot));box-shadow:0 0 6px #9cecff}.rotaryKnob:active{transform:none!important;border-color:#e4fbff}.knobVal{font-size:12px;font-weight:800;color:#a9e9ff;font-variant-numeric:tabular-nums}.knobSteps{display:flex;gap:4px}.knobSteps button{min-width:42px;min-height:42px;font-size:17px;padding:3px;border:1px solid #4b6882}.mixAdvanced{border:1px solid #354b5d;border-radius:10px;overflow:hidden}.mixAdvanced>summary{padding:12px 13px;cursor:pointer;color:#d3e9f7;font-size:13px;font-weight:800;list-style:inside;min-height:44px}.mixAdvancedBody{padding:10px;display:grid;gap:10px}
+@media(max-width:900px){.studioViewSwitch{top:62px}.mixTransport{top:62px}}@media(max-width:700px){.studioViewSwitch{top:58px;padding:8px}.studioViewSwitch>div:first-child{display:none}.viewSwitchButtons{width:100%;display:grid;grid-template-columns:1fr 1fr}.viewSwitchButtons button{font-size:12px;padding:8px 5px}.viewSwitchButtons button:last-child{grid-column:span 2}.mixTransport{top:60px;padding:9px}.mixTransportNote{display:none}.mixTransportTop button{font-size:13px;padding:8px 9px}.mixTransportTop .muted{flex-basis:100%;font-size:11px}.mixKnobCard{min-width:70px;flex-basis:70px}.rotaryKnob{width:60px;height:60px;min-height:60px}}
 </style>
 </head>
 <body>
 <header>
 <div class="headerRow">
-<div class="brand">♫ Kotoba Studio <span class="badge">v4.4.0</span></div>
+<div class="brand">♫ Kotoba Studio <span class="badge">v4.5.0</span></div>
 <button class="primary" id="playBtn">▶ 再生</button><button id="stopBtn">■ 停止</button>
 
 <span class="time" id="time">00:00.0</span>
@@ -221,7 +232,7 @@ body.detailActive.showTracks #tracksCard{display:block!important}
 </section>
 <nav class="studioTabs" aria-label="制作画面" hidden><button data-tab="home">⌂ ホーム</button><button class="primary" data-tab="compose">♬ 音符・録音</button><button data-tab="arrange">▤ 構成・作詞</button><button data-tab="vault">◇ 保管庫</button><button data-tab="mix">☷ ミックス</button><button data-tab="export">↥ 書き出し</button></nav>
 <div id="studioCompose" class="studioScreen" hidden><div class="studioQuick"><span class="quickLabel">PROJECT</span><strong id="studioProjectHeading">無題の楽曲</strong><span id="studioProjectSummary" class="muted">作曲・録音をここで始めましょう</span><button id="toArranger">構成を編集 →</button></div>
-<div class="card" id="tracksCard">
+<div class="studioViewSwitch" role="group" aria-label="譜面と音編集を切り替え"><div><strong>音符・録音</strong><span>譜面は確認用。ブロック編集は指で操作できます。</span></div><div class="viewSwitchButtons"><button id="topScoreView" class="primary">♫ 譜面で確認</button><button id="topDetailView">▦ ブロックを編集（十字キー）</button><button id="topJumpRecording">● 録音・音声取込</button></div></div><div class="card" id="tracksCard">
 <h2>トラック</h2>
 <div class="row" style="margin-bottom:10px">
 <select id="newTrackType">
@@ -356,7 +367,7 @@ body.detailActive.showTracks #tracksCard{display:block!important}
   <div class="studioFields"><label class="small">楽曲名<input id="studioTitle" maxlength="90" placeholder="無題の楽曲"/></label><label class="small">拍子<select id="studioMeter"><option value="4/4">4/4</option><option value="3/4">3/4</option><option value="6/8">6/8</option></select></label><label class="small">曲のキー<select id="studioKey"></select></label></div>
   <p class="studioHelp">録音音声がある場合、音声は小節単位で切り分けず元のトラック位置を維持します。構成の並べ替えは録音音声を含む曲では制限します。</p></div>
   <div class="card"><div class="studioSectionHead"><h2>楽曲構成</h2><button class="primary" id="studioAddSection">＋ セクション追加</button></div><div id="studioSections" class="studioSections"></div><p class="muted">「↑」「↓」はセクション内の音符・コードと歌詞をまとめて入れ替え。「複製」は音符とコードを末尾に追加します。</p></div>
-  <div class="card"><h2 id="studioLyricsHeading">セクションの歌詞</h2><textarea id="studioLyrics" class="studioLyrics" placeholder="このセクションの歌詞を入力…" rows="9"></textarea><div class="studioRow"><span id="studioLyricsCount" class="muted"></span><button id="studioPlaySection">▶ このセクションから再生</button><button id="studioJumpSection">🎹 音符編集へ</button></div></div>
+  <div class="card" id="arrangeMelodyCard"><div class="studioSectionHead"><div><h2>録音とメロディ編集</h2><p class="muted">ここで録音・外部音声の取込 → 音程解析 → 譜面とブロック編集へ自動共有。グラフを触ると対応する音を編集できます。</p></div><button class="primary" id="arrangeToRoll">▦ ブロック編集へ</button></div><div class="arrangeRecordLine"><label class="small">録音するパート<select id="arrangeRecordTrack"></select></label><button id="arrangeRecordBtn" class="primary">● 録音する</button><button id="arrangeImportBtn">＋ 音声を取り込む</button><button id="arrangeHearBtn">▶ 元の声</button><button id="arrangeReanalyzeBtn">↻ 音程を再解析</button></div><div id="arrangeRecordStatus" class="muted">録音するパートを選んでください。</div><div class="pitchPlotHeader"><strong>音程の折れ線グラフ</strong><span id="arrangePitchSummary" class="muted">認識した音符を表示します</span></div><div class="pitchPlotScroll" id="arrangePlotScroll"><svg id="arrangePitchSvg" viewBox="0 0 1040 238" role="img" aria-label="音の高さと時間を表すグラフ"></svg></div><div class="plotLegend">薄い棒＝元録音の音量波形 ／ 線と点＝解析された音符の音程 ／ 点をタップしてブロック編集へ</div></div><div class="card"><h2 id="studioLyricsHeading">セクションの歌詞</h2><textarea id="studioLyrics" class="studioLyrics" placeholder="このセクションの歌詞を入力…" rows="9"></textarea><div class="studioRow"><span id="studioLyricsCount" class="muted"></span><button id="studioPlaySection">▶ このセクションから再生</button><button id="studioJumpSection">🎹 音符編集へ</button></div></div>
   <div class="card"><div class="studioSectionHead"><h2>コード進行</h2><label class="inlineTick"><input id="studioChordsOn" type="checkbox" checked/> 伴奏として鳴らす</label></div>
    <div class="studioRow"><label class="small">ルート<select id="studioChordRoot"></select></label><label class="small">種類<select id="studioChordQuality"><option value="maj">メジャー</option><option value="min">マイナー</option><option value="7">セブンス</option><option value="maj7">メジャー7</option><option value="m7">マイナー7</option><option value="sus4">sus4</option><option value="dim">dim</option></select></label><label class="small">開始拍<input id="studioChordBeat" type="number" value="0" min="0" step="0.25"/></label><label class="small">長さ（拍）<input id="studioChordDuration" type="number" min="0.25" step="0.25" value="4"/></label><button id="studioAddChord" class="primary">＋ コード追加</button></div>
    <div class="studioRow"><button id="studioTemplate">定番進行 I–V–vi–IV を末尾に追加</button><button id="studioMidiExport">MIDIを書き出す</button><button id="studioMidiImport">MIDIを取り込む</button><input id="studioMidiInput" type="file" accept=".mid,.midi,audio/midi,audio/x-midi" hidden/></div>
@@ -371,7 +382,7 @@ body.detailActive.showTracks #tracksCard{display:block!important}
 </section>
 <section class="studioScreen" id="studioMix" hidden>
  <div class="card studioHero"><span class="quickLabel">MIX BOARD</span><h2>ミックス</h2><p class="muted">各パートの音量・パン・3帯域EQ・コンプレッサー・リバーブ・拍単位の音量変化を個別調整。試聴とWAVの両方に適用。</p></div>
- <div class="mixTopGuide"><strong>ミックスの使い方</strong><span>各セクションの <b>?</b> を開くと、役割・音の変化・注意点を確認できます。変更は現在の曲の再生とWAVに反映されます。<br>最初は音量と左右配置を整え、必要に応じてEQ・コンプレッサー・残響を少しずつ調整してください。</span></div>
+ <div class="mixTransport" id="mixTransport"><div class="mixTransportTop"><button id="mixLivePlay" class="primary">▶ リアルタイム試聴</button><button id="mixLiveStop">■ 停止</button><strong id="mixLiveClock">00:00.0</strong><span id="mixLiveStatus" class="muted">試聴を開始すると、各ダイヤルの変更が再生音に即座に反映されます。</span></div><label class="small mixSeekLabel">再生を始める位置 <span id="mixSeekText">1小節目</span><input id="mixSeek" type="range" min="0" max="32" step="0.125" value="0"/></label><p class="mixTransportNote">Web Audioでパートを分けて試聴します。音量・定位・EQ・圧縮・残響・ミュートは再生中も変更可能。6分を超える曲は現時点でライブ試聴対象外です。</p></div><div class="mixTopGuide"><strong>ミックスの使い方</strong><span>各セクションの <b>?</b> を開くと、役割・音の変化・注意点を確認できます。変更はライブ試聴とWAVに反映されます（再生処理が異なるため、効果の効き方には多少の違いがあります）。<br>最初は音量と左右配置を整え、必要に応じてEQ・コンプレッサー・残響を少しずつ調整してください。</span></div>
  <div class="card"><div class="studioSectionHead"><h2>パート別ミキサー</h2><button id="mixToCompose">♬ 音符編集へ</button></div><div id="studioMixer" class="mixerGrid"></div><p class="muted">数値入力は微調整用です。オートメーションのポイントは曲の拍位置で記録し、隣り合うポイント間を滑らかに変化させます。全て曲データに保存されます。</p></div>
 </section>
 <section class="studioScreen" id="studioExport" hidden>
@@ -1119,7 +1130,7 @@ function initMultiSelection(){const wrap=$('#rollWrap');let gesture=null;
 }
 function renderNotePanel(){if(typeof renderTouchSelectedStatus==='function')renderTouchSelectedStatus();const count=selectedNotes().length;$('#selectionCount').textContent=count?count+'音を選択中':'';const n=currentNote(),tr=currentTrack(),isDrum=tr?.type==='drums';['notePitch','drumType','noteStart','noteDur','noteVel','previewNote','deleteNote','halveNotes'].forEach(id=>{const e=$('#'+id);if(e)e.disabled=(id==='deleteNote'||id==='halveNotes')?!count:!n||count>1});if($('#notePitchWrap'))$('#notePitchWrap').hidden=isDrum;if($('#drumTypeWrap'))$('#drumTypeWrap').hidden=!isDrum;if($('#noteSyllable')){$('#noteSyllable').value=n?.lyric||'';$('#noteSyllable').disabled=!n||count>1;}if(!n)return;if(isDrum)$('#drumType').value=String(DRUM_NAMES[n.midi]?n.midi:drumMidi(n.midi));else $('#notePitch').value=n.midi;$('#noteStart').value=+n.start.toFixed(4);$('#noteDur').value=+n.dur.toFixed(4);$('#noteVel').value=n.vel??.75}
 function updateEditorHeader(){const tr=currentTrack();$('#editorTitle').textContent=`音を編集 — ${tr?.name||''}`;$('#editorSub').textContent=tr?.type==='drums'?`ドラム / ${tr.notes.length}音 / 音を選ぶと下で「ドン・タッ・チッ・シャー」を変更できます`:`${TYPES[tr?.type]||''} / ${tr?.notes.length||0}音 / ダブルタップで追加・音符を直接ドラッグ`}
-function renderAll(){renderTracks();renderPitchSelect();renderRoll();renderNotePanel();if($('#touchStep'))$('#touchStep').value=String(state.snap||.25);$('#bpm').value=state.bpm;$('#labelMode').value=state.labelMode;$('#snap').value=state.snap;$('#lengthStep').value=state.lengthStep||.01;$('#rangeMode').value=state.rangeMode;if($('#masterBoost'))$('#masterBoost').value=state.masterBoost||2;if($('#outputMode'))$('#outputMode').value=state.outputMode||'compat';if($('#zoomLabel'))$('#zoomLabel').textContent=Math.round((state.zoom||1)*100)+'%';if($('#zoomResetBtn'))$('#zoomResetBtn').textContent=Math.round((state.zoom||1)*100)+'%';for(const id of ['countInBeats','countInSound','recordBacking','instrumentBoost','monitorLevel','autoHearRecording','trackingMode','sensitivity','recognitionRange','stabilize','pitchCoreFilter','intermediateFilter','mergeNearby','minNoteMs','quantize','inputBoost']){if(state[id]!=null&&$('#'+id))$('#'+id).value=state[id];}if(window.__studioRefReady){requestScoreRefresh();if(typeof fineRefresh==='function')fineRefresh();}}
+function renderAll(){renderTracks();renderPitchSelect();renderRoll();renderNotePanel();if($('#touchStep'))$('#touchStep').value=String(state.snap||.25);$('#bpm').value=state.bpm;$('#labelMode').value=state.labelMode;$('#snap').value=state.snap;$('#lengthStep').value=state.lengthStep||.01;$('#rangeMode').value=state.rangeMode;if($('#masterBoost'))$('#masterBoost').value=state.masterBoost||2;if($('#outputMode'))$('#outputMode').value=state.outputMode||'compat';if($('#zoomLabel'))$('#zoomLabel').textContent=Math.round((state.zoom||1)*100)+'%';if($('#zoomResetBtn'))$('#zoomResetBtn').textContent=Math.round((state.zoom||1)*100)+'%';for(const id of ['countInBeats','countInSound','recordBacking','instrumentBoost','monitorLevel','autoHearRecording','trackingMode','sensitivity','recognitionRange','stabilize','pitchCoreFilter','intermediateFilter','mergeNearby','minNoteMs','quantize','inputBoost']){if(state[id]!=null&&$('#'+id))$('#'+id).value=state[id];}if(window.__studioRefReady){requestScoreRefresh();if(typeof fineRefresh==='function')fineRefresh();if(studioTab==='arrange')renderArrangePitch();}}
 function addNote(midi=60,start=null,dur=null){const tr=currentTrack();if(!tr)return;if(tr.type==='drums')midi=DRUM_NAMES[midi]?midi:36;const last=tr.notes.reduce((a,n)=>Math.max(a,n.start+n.dur),0),snap=+state.snap;const n={id:uid(),midi,start:start??Math.round(last/snap)*snap,dur:dur??Math.max(.001,snap),vel:.75};tr.notes.push(n);state.selectedNote=n.id;renderAll();scrollNoteIntoView(n);saveSilent()}
 function scrollNoteIntoView(n){requestAnimationFrame(()=>{const [lo,hi]=range(),wrap=$('#rollWrap');wrap.scrollLeft=Math.max(0,n.start*CELL_W-140);wrap.scrollTop=Math.max(0,(hi-n.midi)*CELL_H-100)})}
 async function playWebAudio(fromBeat=0){
@@ -1127,9 +1138,9 @@ async function playWebAudio(fromBeat=0){
  const blob=await renderSongAsync(trackAudible,0);if(!blob)return;const buffer=await ctx.decodeAudioData(await blob.arrayBuffer()),src=ctx.createBufferSource();src.buffer=buffer;src.connect(ctx.destination);
  playStartCtx=ctx.currentTime+.02;playStartBeat=fromBeat;const offset=fromBeat*60/state.bpm;if(offset>=buffer.duration)return;src.start(playStartCtx,offset);activeNodes.push(src);src.onended=()=>{if(isPlaying)stop(false)};isPlaying=true;tick();
 }
-async function play(fromBeat=0){const mode=$('#outputMode')?.value||state.outputMode||'compat';if(mode==='compat')return playCompat(fromBeat);return playWebAudio(fromBeat)}
-function stop(reset=true){isPlaying=false;cancelAnimationFrame(raf);const ca=$('#compatPlayer');if(ca){try{ca.pause()}catch{}};activeNodes.forEach(n=>{try{n.stop?.()}catch{}try{n.disconnect?.()}catch{}});activeNodes=[];if(reset){$('#time').textContent='00:00.0';const p=$('#playhead');if(p)p.style.left='0px'}}
-function tick(){if(!isPlaying)return;const ctx=ensureAudio(),bpm=+state.bpm||100,beat=playStartBeat+(ctx.currentTime-playStartCtx)*bpm/60,t=Math.max(0,(beat*60/bpm));$('#time').textContent=fmt(t);const p=$('#playhead');if(p)p.style.left=(Math.max(0,beat)*CELL_W)+'px';if(beat>songEndBeat()+.8)return stop();raf=requestAnimationFrame(tick)}
+async function play(fromBeat=0){if(studioTab==='mix')return playLiveMix(fromBeat);const mode=$('#outputMode')?.value||state.outputMode||'compat';if(mode==='compat')return playCompat(fromBeat);return playWebAudio(fromBeat)}
+function stop(reset=true){liveStop();isPlaying=false;cancelAnimationFrame(raf);const ca=$('#compatPlayer');if(ca){try{ca.pause()}catch{}};activeNodes.forEach(n=>{try{n.stop?.()}catch{}try{n.disconnect?.()}catch{}});activeNodes=[];if(reset){$('#time').textContent='00:00.0';const p=$('#playhead');if(p)p.style.left='0px'}}
+function tick(){if(!isPlaying)return;const ctx=ensureAudio(),bpm=+state.bpm||100,beat=playStartBeat+(ctx.currentTime-playStartCtx)*bpm/60,t=Math.max(0,(beat*60/bpm));$('#time').textContent=fmt(t);const p=$('#playhead');if(p)p.style.left=(Math.max(0,beat)*CELL_W)+'px';if(liveSession){$('#mixLiveClock').textContent=fmt(t);$('#mixLivePlay').textContent='■ 試聴中';if(!mixSeekDragging)$('#mixSeek').value=Math.min(songEndBeat(),Math.max(0,beat));if(!mixSeekDragging)$('#mixSeekText').textContent=(Math.floor(beat/studioBarBeats())+1)+'小節目';}if(beat>songEndBeat()+.8){if(liveSession){$('#mixSeek').value='0';$('#mixSeekText').textContent='1小節目';mixLiveStatus('試聴を終了しました。もう一度▶で先頭から再生できます。');}return stop();}raf=requestAnimationFrame(tick)}
 function fmt(t){const m=Math.floor(t/60),s=t-m*60;return String(m).padStart(2,'0')+':'+s.toFixed(1).padStart(4,'0')}
 async function playFromSelected(){if(recordPreparing||analysisBusy||mediaRecorder?.state==='recording')return toast('録音・解析が終わってから再生してください');const notes=selectedNotes();if(!notes.length)return toast('再生を始めたい音程バーを選択してください');const beat=Math.min(...notes.map(n=>n.start));scrollNoteIntoView(notes.find(n=>n.start===beat));return play(beat);}
 async function preview(n=currentNote()){if(!n)return;const tr=currentTrack(),r=KotobaMixer.mix({bpm:state.bpm,masterBoost:masterBoost(),instrumentBoost:instrumentBoost(),tracks:[{type:tr.type,volume:tr.volume,mix:tr.mix||{},recordStart:0,notes:[{...n,start:0,dur:Math.max(.001,n.dur)}]}]});return playCompatBlob(floatStereoToWav(r.samples,r.rightSamples,r.sampleRate),'選択音')}
@@ -1166,7 +1177,7 @@ async function renderSongAsync(include=trackAudible,fromBeat=0){
 function cancelMix(){if(!mixBusy)return;mixSerial++;mixWorker?.terminate();mixWorker=null;mixReject?.(new Error('cancelled'));mixReject=null;mixBusy=false;$('#playBtn').disabled=false;$('#wavBtn').disabled=false;setAudioStatus('曲の作成を中止しました')}
 async function playCompat(fromBeat=0){stop(false);const offsetSeconds=fromBeat*60/state.bpm;setAudioStatus('曲を作成中…');const blob=await renderSongAsync(trackAudible,fromBeat);if(!blob){setAudioStatus('再生できる音がありません');toast('音符または録音がありません');return}await playCompatBlob(blob,'曲',offsetSeconds)}
 
-function setRecStatus(t){const el=$('#recStatus');if(el)el.textContent=t}
+function setRecStatus(t){const el=$('#recStatus');if(el)el.textContent=t;const a=$('#arrangeRecordStatus');if(a)a.textContent=t;}
 function pcmBackupBuffer(backup){if(!backup?.samples?.length)return null;const ctx=ensureAudio(),b=ctx.createBuffer(1,backup.samples.length,backup.sampleRate||22050);b.copyToChannel(backup.samples,0);return b;}
 async function attachRecordedBlob(blob,tr,sourceLabel='録音',startBeat=Math.max(0,+$('#recordStart').value||0),pcmBackup=null,edit=null){
  setRecStatus(`${sourceLabel}を読み込み中…`);let buffer=null,chosenBlob=blob;
@@ -1280,7 +1291,7 @@ async function startRecording(){
 }
 function stopRecording(){stopRecordBacking();if(mediaRecorder?.state==='recording'){recordPreparing=true;stopRecClock(true);setRecStatus('録音データを受け取り中…');$('#recBtn').disabled=true;mediaRecorder.stop();}}
 function cleanupMic(){cancelAnimationFrame(recMeterRAF);const streams=new Set([mediaStream,rawMediaStream]);for(const s of streams)s?.getTracks().forEach(t=>t.stop());if(pcmProcessor)try{pcmProcessor.onaudioprocess=null}catch{}if(recordGraph)for(const n of Object.values(recordGraph))try{n?.disconnect?.()}catch{}mediaStream=null;rawMediaStream=null;recordGraph=null;recordAnalyser=null;pcmProcessor=null;$('#meterBar').style.width='0%';}
-function setRecUI(on){for(const id of ['reconvertBtn','audioImportBtn','importProjectBtn','recordLimit','countInBeats','countInSound','recordBacking','bpm','recordStart','recordEnd','recordMode','continueRecBtn','reconvertRangeBtn','selectionToRange','analysisStart','analysisEnd'])$('#'+id).disabled=on;$('#recBtn').disabled=false;$('#recBox').classList.toggle('recording',on);$('#recBtn').classList.toggle('recording',on);$('#recBtn').textContent=on?'■ 録音停止':'● 声を録音';if(!on)cancelAnimationFrame(recMeterRAF);}
+function setRecUI(on){for(const id of ['reconvertBtn','audioImportBtn','importProjectBtn','recordLimit','countInBeats','countInSound','recordBacking','bpm','recordStart','recordEnd','recordMode','continueRecBtn','reconvertRangeBtn','selectionToRange','analysisStart','analysisEnd'])$('#'+id).disabled=on;$('#recBtn').disabled=false;$('#recBox').classList.toggle('recording',on);$('#recBtn').classList.toggle('recording',on);$('#recBtn').textContent=on?'■ 録音停止':'● 声を録音';if($('#arrangeRecordBtn')){$('#arrangeRecordBtn').textContent=on?'■ 録音停止／キャンセル':'● 録音する';$('#arrangeImportBtn').disabled=on;}if(!on)cancelAnimationFrame(recMeterRAF);}
 function meterLoop(){
  const an=recordAnalyser;if(!an)return;const data=new Float32Array(an.fftSize),bytes=new Uint8Array(an.fftSize);let peakRms=0,lastUI=0;
  function loop(now){if(!rawMediaStream||mediaRecorder?.state!=='recording')return;
@@ -1424,6 +1435,7 @@ function studioEnsure(){
 function studioBarBeats(){return studio()?.meter==='3/4'||studio()?.meter==='6/8'?3:4}
 function studioPlaces(){let beat=0;return studioEnsure().sections.map((sec,i)=>{const o={...sec,index:i,start:beat,length:sec.bars*studioBarBeats()};beat+=o.length;return o})}
 function studioChordNotes(){const result=[];for(const c of studio()?.chords||[]){const root=48+Math.round(c.root),ivs=STUDIO_INTERVALS[c.quality]||STUDIO_INTERVALS.maj;for(const semis of ivs){const midi=root+semis;result.push({midi,start:c.start,dur:c.dur,vel:.55})}}return result}
+let composeUserChoseScore=false;
 let studioTab='home',vaultDbPromise=null,vaultEntries=[],vaultAudioURL=null,vaultLoadDone=false,studioRendering=false;
 function studioChangeTab(tab){
  studioTab=['home','compose','arrange','vault','mix','export'].includes(tab)?tab:'home';
@@ -1436,7 +1448,7 @@ function studioChangeTab(tab){
  if(studioTab==='mix')studioRenderMixer();
  if(studioTab==='export')studioRenderExport();
  studioRenderHome();
- if(studioTab==='compose')requestScoreRefresh();
+ if(studioTab==='compose'){if(!composeUserChoseScore)studioOpenDetail(state.selectedTrack);studio45ComposeSwitch();requestScoreRefresh();}
  window.scrollTo({top:0,behavior:'instant'});
 }
 function studioRender(){
@@ -1453,7 +1465,7 @@ function studioRender(){
  const cbox=$('#studioChordList');cbox.innerHTML='';
  for(const chord of [...s.chords].sort((a,b)=>a.start-b.start)){const row=document.createElement('div');row.className='studioChord';row.innerHTML=`<div><strong>${escapeHTML(STUDIO_ROOTS[chord.root]||'C')}${escapeHTML(chord.quality==='maj'?'':chord.quality)}</strong><span class="muted"> ${chord.start}拍〜${+(chord.start+chord.dur).toFixed(2)}拍</span></div><div class="studioRow"><button data-previewchord="${chord.id}">♪ 試聴</button><button data-removechord="${chord.id}" class="danger">削除</button></div>`;cbox.appendChild(row)}
  if(!s.chords.length)cbox.innerHTML='<p class="muted">まだコードがありません。追加すると再生・WAV・MIDIに反映されます。</p>';
- if(window.__studioRefReady){requestScoreRefresh();studioRenderHome();}
+ if(window.__studioRefReady){requestScoreRefresh();studioRenderHome();if(studioTab==='arrange')renderArrangePitch();}
  } finally {studioRendering=false}
 }
 function studioEdit(){renderAll();studioRender();saveSilent()}
@@ -1516,7 +1528,7 @@ function studioInitEvents(){
  $('#studioLyrics').addEventListener('input',e=>{const x=studioSectionById(studio().activeSection);if(x){x.lyrics=e.target.value.slice(0,30000);$('#studioLyricsCount').textContent=x.lyrics.length+'文字';queueSave()}});
  $('#studioLyrics').addEventListener('change',()=>{noteHistory();studioRender()});
  $('#studioPlaySection').onclick=()=>{const a=studioPlaces().find(x=>x.id===studio().activeSection);if(a)play(a.start)};
- $('#studioJumpSection').onclick=()=>{const a=studioPlaces().find(x=>x.id===studio().activeSection);studioChangeTab('compose');if(a){const wrap=$('#rollWrap');wrap.scrollLeft=Math.max(0,a.start*CELL_W-20)}};
+ $('#studioJumpSection').onclick=()=>{const a=studioPlaces().find(x=>x.id===studio().activeSection);studioChangeTab('compose');studioOpenDetail(state.selectedTrack);if(a){scorePositionFocus(a.start);const wrap=$('#rollWrap');wrap.scrollLeft=Math.max(0,a.start*CELL_W-20)}};
  $('#studioAddChord').onclick=()=>{const root=+$('#studioChordRoot').value,quality=$('#studioChordQuality').value,start=+$('#studioChordBeat').value,dur=+$('#studioChordDuration').value;if(!studioChordAdd(root,quality,start,dur))return toast('コードの時刻を確認してください');studioRender();saveSilent()};
  $('#studioTemplate').onclick=()=>{const s=studioEnsure(),bb=studioBarBeats(),end=s.chords.reduce((v,c)=>Math.max(v,c.start+c.dur),0),key=s.key,seq=[[0,'maj'],[7,'maj'],[9,'min'],[5,'maj']];if(end+4*bb>7200)return toast('長さの上限です');for(let i=0;i<4;i++)studioChordAdd((key+seq[i][0])%12,seq[i][1],end+i*bb,bb);studioRender();saveSilent()};
  $('#studioChordList').onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.removechord){studio().chords=studio().chords.filter(c=>c.id!==b.dataset.removechord);studioRender();saveSilent()}if(b.dataset.previewchord){const c=studio().chords.find(c=>c.id===b.dataset.previewchord);if(c)studioChordPreview(c)}};
@@ -1646,8 +1658,15 @@ const MIX_HELP={
  automation:'曲の途中で音量がどう変わるかを拍位置で指定します。1.0が通常、0が無音、2.0が2倍。複数ポイントの間は滑らかに変化します。サビの盛り上げやフェードに使えます。'
 };
 function mixGroupHead(key,title){return `<div class="mixGroupHeading"><strong>${title}</strong><details class="mixHelpDisclosure"><summary aria-label="${title}の説明">?</summary><p>${MIX_HELP[key]}</p></details></div>`;}
-function studioRenderMixer(){const e=$('#studioMixer');if(!e)return;e.innerHTML=state.tracks.map(t=>{const m=mixCfg(t),auto=m.automation.map((p,i)=>`<div class="mixAutoRow"><label class="small">位置（拍）<input type="number" min="0" max="7200" step="0.001" value="${p.beat}" data-autopoint="${t.id}" data-autoidx="${i}" data-autoattr="beat"/></label><label class="small">音量倍率<input type="number" min="0" max="2" step="0.01" value="${p.value}" data-autopoint="${t.id}" data-autoidx="${i}" data-autoattr="value"/></label><button data-autodel="${t.id}" data-autoidx="${i}" aria-label="このポイントを削除" class="danger">削除</button></div>`).join('');
- return `<div class="mixChannel" data-channel="${t.id}"><div class="mixHeader"><strong>${scoreEsc(t.name)}</strong><span class="muted">${scoreEsc(TYPES[t.type])} / ${t.notes.length}音${t.recordBlob?' / 録音あり':''}</span></div><div class="mixGroup">${mixGroupHead('volume','音量・左右定位')}<div class="mixPair"><label class="small">音量（0〜400%）<input type="range" min="0" max="4" step="0.01" value="${t.volume}" data-mixvol="${t.id}"/></label><label class="small">倍率<input type="number" min="0" max="4" step="0.01" value="${t.volume}" data-mixvolumeinput="${t.id}"/></label></div>${mixPair(t,'パン（−1=左 / 0=中央 / +1=右）','pan',-1,1,.01)}</div><div class="mixGroup">${mixGroupHead('eq','3帯域EQ')}${mixPair(t,'低音 150Hz','low',-18,18,.5,'dB')}${mixPair(t,'中音 1.1kHz','mid',-18,18,.5,'dB')}${mixPair(t,'高音 5.3kHz','high',-18,18,.5,'dB')}</div><div class="mixGroup">${mixGroupHead('compressor','コンプレッサー')}${mixPair(t,'しきい値','threshold',-50,0,1,'dB')}${mixPair(t,'圧縮比（1=OFF）','ratio',1,12,.1,'比率')}</div><div class="mixGroup">${mixGroupHead('reverb','リバーブ')}${mixPair(t,'響きの強さ（0=OFF）','reverb',0,.75,.01,'量')}</div><div class="mixGroup">${mixGroupHead('automation','音量オートメーション')}<div class="muted">拍位置を指定し、その前後で音量を滑らかに変えます。1=通常、0=無音、2=2倍。</div><div class="mixAuto">${auto||'<span class="muted">ポイントなし（常に100%）</span>'}</div><div class="row"><button data-autoadd="${t.id}">＋ ポイント追加</button><button data-autoreset="${t.id}">設定を戻す</button></div></div><div class="row"><button data-mixsolo="${t.id}" class="${t.solo?'primary':''}">${t.solo?'S ソロ中':'S ソロ'}</button><button data-mixmute="${t.id}" class="${t.mute?'danger':''}">${t.mute?'M ミュート中':'M ミュート'}</button><button data-mixedit="${t.id}">音符を編集 →</button></div></div>`}).join('');}
+function rotaryKnob(tr,name,key,min,max,step,unit='',isVolume=false){
+ const val=isVolume?tr.volume:mixCfg(tr)[key],norm=clamp((val-min)/(max-min),0,1),rot=-135+norm*270;
+ const id=scoreEsc(tr.id),v=Number(val.toFixed(step<.1?2:step<1?1:0));
+ return `<div class="mixKnobCard"><label>${name}</label><button type="button" class="rotaryKnob" data-rotary="${id}" data-rkey="${key}" data-rmin="${min}" data-rmax="${max}" data-rstep="${step}" data-rvolume="${isVolume?1:0}" style="--rot:${rot}deg" aria-label="${name}：上下ドラッグで調整" role="slider" aria-valuemin="${min}" aria-valuemax="${max}" aria-valuenow="${v}"><span class="knobTick"></span></button><span class="knobVal">${v}${unit}</span><div class="knobSteps"><button data-knobstep="-1" aria-label="${name}を1刻み下げる">−</button><button data-knobstep="1" aria-label="${name}を1刻み上げる">＋</button></div></div>`;
+}
+function studioRenderMixer(){const e=$('#studioMixer');if(!e)return;
+ e.innerHTML=state.tracks.map(t=>{const m=mixCfg(t),auto=m.automation.map((p,i)=>`<div class="mixAutoRow"><label class="small">位置（拍）<input type="number" min="0" max="7200" step="0.001" value="${p.beat}" data-autopoint="${t.id}" data-autoidx="${i}" data-autoattr="beat"/></label><label class="small">音量倍率<input type="number" min="0" max="2" step="0.01" value="${p.value}" data-autopoint="${t.id}" data-autoidx="${i}" data-autoattr="value"/></label><button data-autodel="${t.id}" data-autoidx="${i}" aria-label="このポイントを削除" class="danger">削除</button></div>`).join('');
+ return `<div class="mixChannel" data-channel="${t.id}"><div class="mixHeader"><strong>${scoreEsc(t.name)}</strong><span class="muted">${scoreEsc(TYPES[t.type])} / ${t.notes.length}音${t.recordBlob?' / 録音あり':''}</span></div><div class="mixKnobDeck">${rotaryKnob(t,'音量','volume',0,4,.01,'×',true)}${rotaryKnob(t,'左右','pan',-1,1,.01)}${rotaryKnob(t,'低音','low',-18,18,.5,'dB')}${rotaryKnob(t,'中音','mid',-18,18,.5,'dB')}${rotaryKnob(t,'高音','high',-18,18,.5,'dB')}</div><p class="muted">ダイヤルは上下にドラッグ。− / ＋で細かく調整できます。再生中も即時に音へ反映。</p><details class="mixAdvanced"><summary>⚙ 圧縮・残響・オートメーションを開く</summary><div class="mixAdvancedBody"><div class="mixGroup">${mixGroupHead('volume','音量・左右定位')}<div class="muted">ダイヤルの音量と左右定位を調整します。</div></div><div class="mixGroup">${mixGroupHead('eq','3帯域EQ')}<div class="muted">低・中・高音のダイヤルを使います。</div></div><div class="mixGroup">${mixGroupHead('compressor','コンプレッサー')}${mixPair(t,'しきい値','threshold',-50,0,1,'dB')}${mixPair(t,'圧縮比（1=OFF）','ratio',1,12,.1,'比率')}</div><div class="mixGroup">${mixGroupHead('reverb','リバーブ')}${mixPair(t,'響きの強さ（0=OFF）','reverb',0,.75,.01,'量')}</div><div class="mixGroup">${mixGroupHead('automation','音量オートメーション')}<div class="muted">拍を指定すると区間内で音量が滑らかに変わります。</div><div class="mixAuto">${auto||'<span class="muted">ポイントなし</span>'}</div><div class="row"><button data-autoadd="${t.id}">＋ ポイント追加</button><button data-autoreset="${t.id}">設定を戻す</button></div></div></div></details><div class="row"><button data-mixsolo="${t.id}" class="${t.solo?'primary':''}">${t.solo?'S ソロ中':'S ソロ'}</button><button data-mixmute="${t.id}" class="${t.mute?'danger':''}">${t.mute?'M ミュート中':'M ミュート'}</button><button data-mixedit="${t.id}">▦ 音符を編集 →</button></div></div>`;}).join('');
+}
 
 function requestScoreRefresh(){if(scoreFrame)return;scoreFrame=requestAnimationFrame(()=>{scoreFrame=0;scoreRender();});}
 function scoreRender(){if(!$('#refScoreRows'))return;const s=studioEnsure(),tracks=state.tracks;
@@ -1893,20 +1912,20 @@ function studioReferenceEvents(){
  $('#refChordPreview').onclick=()=>{const chord=currentReferenceChord();if(chord)studioChordPreview(chord);else testExactPitch(60+(studioEnsure().key||0));};
  $('#playRefFrom').onclick=()=>play(scoreCursor);
  $('#studioMixer').addEventListener('input',e=>{
- const t=e.target;if(t.dataset.mixvol){const tr=state.tracks.find(x=>x.id===t.dataset.mixvol);if(!tr)return;tr.volume=clamp(+t.value,0,4);const pair=t.closest('.mixPair');if(pair)pair.querySelector('[data-mixvolumeinput]').value=tr.volume;renderTracks();saveSilent();return;}
- if(t.dataset.mixparam&&t.dataset.kind==='range'){const tr=state.tracks.find(x=>x.id===t.dataset.mixparam);if(!tr)return;const key=t.dataset.param;mixCfg(tr)[key]=clamp(+t.value,+t.min,+t.max);const pair=t.closest('.mixPair');if(pair)pair.querySelector('[data-kind="num"]').value=t.value;saveSilent();}
+ const t=e.target;if(t.dataset.mixvol){const tr=state.tracks.find(x=>x.id===t.dataset.mixvol);if(!tr)return;tr.volume=clamp(+t.value,0,4);const pair=t.closest('.mixPair');if(pair)pair.querySelector('[data-mixvolumeinput]').value=tr.volume;renderTracks();liveUpdateChannel(tr);saveSilent();return;}
+ if(t.dataset.mixparam&&t.dataset.kind==='range'){const tr=state.tracks.find(x=>x.id===t.dataset.mixparam);if(!tr)return;const key=t.dataset.param;mixCfg(tr)[key]=clamp(+t.value,+t.min,+t.max);const pair=t.closest('.mixPair');if(pair)pair.querySelector('[data-kind="num"]').value=t.value;liveUpdateChannel(tr);saveSilent();}
 });
 $('#studioMixer').addEventListener('change',e=>{const t=e.target;
- if(t.dataset.mixvolumeinput){const tr=state.tracks.find(x=>x.id===t.dataset.mixvolumeinput);if(!tr)return;tr.volume=clamp(Number.isFinite(+t.value)?+t.value:tr.volume,0,4);t.value=tr.volume;t.closest('.mixPair')?.querySelector('[data-mixvol]')?.setAttribute('value',tr.volume);t.closest('.mixPair').querySelector('[data-mixvol]').value=tr.volume;renderTracks();saveSilent();return;}
- if(t.dataset.mixparam&&t.dataset.kind==='num'){const tr=state.tracks.find(x=>x.id===t.dataset.mixparam);if(!tr)return;const m=mixCfg(tr),key=t.dataset.param;m[key]=clamp(Number.isFinite(+t.value)?+t.value:m[key],+t.min,+t.max);t.value=m[key];t.closest('.mixPair').querySelector('[data-kind="range"]').value=m[key];saveSilent();return;}
- if(t.dataset.autopoint){const tr=state.tracks.find(x=>x.id===t.dataset.autopoint);if(!tr)return;const m=mixCfg(tr),p=m.automation[+t.dataset.autoidx],key=t.dataset.autoattr;if(!p)return;p[key]=clamp(Number.isFinite(+t.value)?+t.value:p[key],+t.min,+t.max);m.automation.sort((a,b)=>a.beat-b.beat);studioRenderMixer();saveSilent();}
+ if(t.dataset.mixvolumeinput){const tr=state.tracks.find(x=>x.id===t.dataset.mixvolumeinput);if(!tr)return;tr.volume=clamp(Number.isFinite(+t.value)?+t.value:tr.volume,0,4);t.value=tr.volume;t.closest('.mixPair')?.querySelector('[data-mixvol]')?.setAttribute('value',tr.volume);t.closest('.mixPair').querySelector('[data-mixvol]').value=tr.volume;renderTracks();liveUpdateChannel(tr);saveSilent();return;}
+ if(t.dataset.mixparam&&t.dataset.kind==='num'){const tr=state.tracks.find(x=>x.id===t.dataset.mixparam);if(!tr)return;const m=mixCfg(tr),key=t.dataset.param;m[key]=clamp(Number.isFinite(+t.value)?+t.value:m[key],+t.min,+t.max);t.value=m[key];t.closest('.mixPair').querySelector('[data-kind="range"]').value=m[key];liveUpdateChannel(tr);saveSilent();return;}
+ if(t.dataset.autopoint){const tr=state.tracks.find(x=>x.id===t.dataset.autopoint);if(!tr)return;const m=mixCfg(tr),p=m.automation[+t.dataset.autoidx],key=t.dataset.autoattr;if(!p)return;p[key]=clamp(Number.isFinite(+t.value)?+t.value:p[key],+t.min,+t.max);m.automation.sort((a,b)=>a.beat-b.beat);studioRenderMixer();liveUpdateChannel(tr);saveSilent();}
 });
  $('#studioMixer').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const tr=state.tracks.find(t=>t.id===(b.dataset.mixsolo||b.dataset.mixmute||b.dataset.mixedit||b.dataset.autoadd||b.dataset.autodel||b.dataset.autoreset));if(!tr)return;
- if(b.dataset.mixedit){studioChangeTab('compose');scoreSelectTrack(tr.id);return}
- if(b.dataset.autoadd){const m=mixCfg(tr);if(m.automation.length>=128)return toast('ポイントは128個までです');const beat=clamp(+scoreCursor||0,0,7200);m.automation.push({beat,value:1});m.automation.sort((a,b)=>a.beat-b.beat);studioRenderMixer();saveSilent();return;}
- if(b.dataset.autodel){const m=mixCfg(tr);m.automation.splice(+b.dataset.autoidx,1);studioRenderMixer();saveSilent();return;}
- if(b.dataset.autoreset){if(!confirm(tr.name+' のEQ・パン・エフェクト・オートメーションを初期値に戻しますか？'))return;tr.mix={};studioRenderMixer();saveSilent();return;}
- if(b.dataset.mixsolo)tr.solo=!tr.solo;if(b.dataset.mixmute)tr.mute=!tr.mute;renderTracks();studioRenderMixer();saveSilent();});
+ if(b.dataset.mixedit){studioChangeTab('compose');studioOpenDetail(tr.id);return}
+ if(b.dataset.autoadd){const m=mixCfg(tr);if(m.automation.length>=128)return toast('ポイントは128個までです');const beat=clamp(+scoreCursor||0,0,7200);m.automation.push({beat,value:1});m.automation.sort((a,b)=>a.beat-b.beat);studioRenderMixer();liveUpdateChannel(tr);saveSilent();return;}
+ if(b.dataset.autodel){const m=mixCfg(tr);m.automation.splice(+b.dataset.autoidx,1);studioRenderMixer();liveUpdateChannel(tr);saveSilent();return;}
+ if(b.dataset.autoreset){if(!confirm(tr.name+' のEQ・パン・エフェクト・オートメーションを初期値に戻しますか？'))return;tr.mix={};studioRenderMixer();liveUpdateChannel(tr);saveSilent();return;}
+ if(b.dataset.mixsolo)tr.solo=!tr.solo;if(b.dataset.mixmute)tr.mute=!tr.mute;renderTracks();studioRenderMixer();liveUpdateAll();saveSilent();});
  $('#mixToCompose').onclick=()=>studioChangeTab('compose');
  for(const [id,target] of [['expWav','wavBtn'],['expMidi','studioMidiExport'],['expProject','exportProjectBtn'],['expSave','saveBtn'],['expLoad','importProjectBtn']])$('#'+id).onclick=()=>$('#'+target).click();
  for(let m=48;m<=84;m++){$('#refPitchSelect').insertAdjacentHTML('beforeend',`<option value="${m}" ${m===69?'selected':''}>${scoreEsc(midiLabel(m,'letter'))}${m===69?' — 440Hz':''}</option>`)}
@@ -1916,11 +1935,106 @@ $('#studioMixer').addEventListener('change',e=>{const t=e.target;
  window.__studioRefReady=true;
  studioChangeTab('home');
 }
+
+// v4.5 arrangement recording and pitch graph: same state, no second copy of notes.
+function renderArrangePitch(){
+ const sel=$('#arrangeRecordTrack'),svg=$('#arrangePitchSvg');if(!sel||!svg)return;
+ const current=sel.value;sel.innerHTML=state.tracks.map(t=>`<option value="${t.id}">${scoreEsc(t.name)}${t.recordBuffer?'（録音あり）':''}</option>`).join('');
+ sel.value=state.tracks.some(t=>t.id===current)?current:(state.tracks.find(t=>t.type==='voice')?.id||state.selectedTrack);
+ const tr=state.tracks.find(t=>t.id===sel.value);if(!tr)return;
+ const active=studioPlaces().find(x=>x.id===studio().activeSection)||studioPlaces()[0];if(!active)return;
+ const from=active.start,to=from+active.length, notes=tr.notes.filter(n=>n.start<to&&n.start+n.dur>from).sort((a,b)=>a.start-b.start),pitchMin=tr.type==='bass'?24:36,pitchMax=tr.type==='bass'?76:96;
+ const mx=1018,x0=54,w=mx-x0,h=194,y0=18;const x=beat=>x0+clamp((beat-from)/(to-from),0,1)*w,y=m=>y0+(pitchMax-clamp(m,pitchMin,pitchMax))/(pitchMax-pitchMin)*h;
+ let out='';for(let i=0;i<=8;i++){const midi=pitchMin+(pitchMax-pitchMin)*i/8,py=y(midi);out+=`<line x1="${x0}" x2="${mx}" y1="${py}" y2="${py}" stroke="#32475b" stroke-width="1"/><text x="10" y="${py+4}" fill="#a7c6d9" font-size="11">${scoreEsc(midiLabel(Math.round(midi),'letter'))}</text>`;}
+ for(let b=0;b<=active.length;b+=studioBarBeats()){const bx=x(from+b);out+=`<line x1="${bx}" x2="${bx}" y1="${y0}" y2="${y0+h}" stroke="#48637d" stroke-width="1"/><text x="${bx+3}" y="233" fill="#9ab8cc" font-size="11">${Math.floor((from+b)/studioBarBeats())+1}小節</text>`;}
+ if(tr.recordBuffer){const buffer=tr.recordBuffer,pcm=buffer.getChannelData(0),hz=buffer.sampleRate,spb=60/state.bpm,base=(tr.recordStart||0)*spb;let wave='';for(let i=0;i<220;i++){const left=(from+(i/220)*(to-from))*spb-base,right=(from+((i+1)/220)*(to-from))*spb-base;let a=Math.max(0,Math.floor(left*hz)),b=Math.min(pcm.length,Math.floor(right*hz));if(b<=a||a>=pcm.length)continue;const step=Math.max(1,Math.ceil((b-a)/50));let peak=0;for(let j=a;j<b;j+=step)peak=Math.max(peak,Math.abs(pcm[j]));const bx=x(from+(i+.5)/220*(to-from)),mag=clamp(peak,0,1)*38;wave+=`<line x1="${bx}" x2="${bx}" y1="${113-mag}" y2="${113+mag}" stroke="#5486a3" stroke-opacity=".46" stroke-width="2"/>`;}out+=wave;}
+ let path='';notes.forEach((n,i)=>{const bx=x(clamp(n.start,from,to)),ex=x(clamp(n.start+n.dur,from,to)),py=y(n.midi);if(i===0)path+=`M ${bx.toFixed(2)} ${py.toFixed(2)} `;else path+=`L ${bx.toFixed(2)} ${py.toFixed(2)} `;path+=`L ${ex.toFixed(2)} ${py.toFixed(2)} `;});
+ if(path)out+=`<path d="${path}" stroke="#7de1fa" stroke-width="2.5" stroke-linejoin="round" fill="none"/>`;
+ for(const n of notes.slice(0,500)){const bx=x(clamp(n.start+n.dur/2,from,to)),py=y(n.midi);out+=`<circle cx="${bx}" cy="${py}" r="5" fill="#f8d377" stroke="#fff1c7" stroke-width="1.5"/><circle data-pitch-note="${n.id}" data-pitch-track="${tr.id}" cx="${bx}" cy="${py}" r="14" fill="transparent" tabindex="0" role="button" aria-label="${scoreEsc(midiLabel(n.midi))} の音を編集"/>`;}
+ if(!notes.length)out+=`<text x="525" y="115" text-anchor="middle" fill="#aec8d8" font-size="20">録音すると音程グラフがここに表示されます</text>`;
+ svg.innerHTML=out;$('#arrangePitchSummary').textContent=`${active.name} / ${notes.length}音 / ${tr.recordBuffer?'音声波形あり':'音声波形なし'}`;
+}
+function studio45ComposeSwitch(){const detail=$('#editorCard').classList.contains('workbenchMode');$('#topDetailView').classList.toggle('currentView',detail);$('#topScoreView').classList.toggle('currentView',!detail);$('#topDetailView').setAttribute('aria-pressed',String(detail));$('#topScoreView').setAttribute('aria-pressed',String(!detail));}
+// Live mix preview runs independent Web Audio stems so their channel settings are not baked into a fixed WAV.
+let liveSession=null,liveSerial=0,liveWorker=null,liveReject=null,mixSeekDragging=false;
+function mixLiveStatus(text){const e=$('#mixLiveStatus');if(e)e.textContent=text;}
+function liveStop(){++liveSerial;if(liveWorker){liveWorker.terminate();liveWorker=null;}if(liveReject){const reject=liveReject;liveReject=null;reject(new Error('ライブ試聴の準備を中止しました'));}if(liveSession){for(const stem of liveSession.stems.values()){try{stem.source.stop()}catch{}try{stem.source.disconnect()}catch{}}try{liveSession.master.disconnect()}catch{}liveSession=null;}if($('#mixLivePlay'))$('#mixLivePlay').textContent='▶ リアルタイム試聴';}
+function liveRamp(param,value,ctx){const when=ctx.currentTime;param.cancelScheduledValues(when);param.setTargetAtTime(value,when,.015);}
+function liveScheduleAutomation(tr,stem){const g=stem.automation.gain,ctx=liveSession?.ctx;if(!ctx)return;const now=ctx.currentTime,spb=60/state.bpm,beat=liveSession.fromBeat+(now-liveSession.start)*state.bpm/60,pts=mixCfg(tr).automation;
+ g.cancelScheduledValues(now);const interp=()=>{if(!pts.length)return 1;if(beat<=pts[0].beat)return pts[0].value;for(let i=0;i<pts.length-1;i++)if(beat<pts[i+1].beat){const a=pts[i],b=pts[i+1],ratio=(beat-a.beat)/(b.beat-a.beat||1);return a.value+(b.value-a.value)*ratio;}return pts[pts.length-1].value;};
+ g.setValueAtTime(interp(),now);for(const p of pts){const at=liveSession.start+(p.beat-liveSession.fromBeat)*spb;if(at>now)g.linearRampToValueAtTime(p.value,at);}
+}
+function liveUpdateChannel(tr){if(!liveSession)return;const stem=liveSession.stems.get(tr.id);if(!stem)return;const ctx=liveSession.ctx,m=mixCfg(tr),audible=trackAudible(tr);liveRamp(stem.volume.gain,audible?tr.volume:0,ctx);liveRamp(stem.pan.pan,m.pan,ctx);liveRamp(stem.low.gain,m.low,ctx);liveRamp(stem.mid.gain,m.mid,ctx);liveRamp(stem.high.gain,m.high,ctx);liveRamp(stem.comp.threshold,m.threshold,ctx);liveRamp(stem.comp.ratio,m.ratio,ctx);liveRamp(stem.reverbA.gain,m.reverb*.24,ctx);liveRamp(stem.reverbB.gain,m.reverb*.16,ctx);liveScheduleAutomation(tr,stem);}
+function liveUpdateAll(){if(!liveSession)return;for(const tr of state.tracks)liveUpdateChannel(tr);}
+async function playLiveMix(fromBeat=0){
+ stop(false);const serial=++liveSerial;
+ if(songEndBeat()*60/state.bpm>360){mixLiveStatus('長い曲のリアルタイム試聴は現在6分以内に対応。短い曲／部分プロジェクトで試してください。');return;}
+ const ctx=await unlockAudio();if(ctx.state!=='running'){mixLiveStatus('音声が開始できません。iPadの音量とSafariの音声許可を確認してください。');return;}
+ const specs=[];for(const t of state.tracks){if(!t.notes.length&&!t.recordBuffer)continue;let voice=null;if(t.type==='voice'&&t.recordBuffer){voice=new Float32Array(t.recordBuffer.length);for(let c=0;c<t.recordBuffer.numberOfChannels;c++){const src=t.recordBuffer.getChannelData(c);for(let i=0;i<src.length;i++)voice[i]+=src[i]/t.recordBuffer.numberOfChannels;}}
+ specs.push({id:t.id,track:{type:t.type,volume:1,recordStart:t.recordStart||0,trimStart:t.trimStart||0,trimEnd:t.trimEnd||0,mix:{},voice,sampleRate:t.recordBuffer?.sampleRate||22050,notes:t.notes.map(n=>({...n}))}});}
+ if(studio()?.chordsOn&&studioChordNotes().length){specs.push({id:'__chords__',track:{type:'piano',volume:1,recordStart:0,mix:{},sampleRate:22050,notes:studioChordNotes()}});}
+ if(!specs.length){mixLiveStatus('再生できる音がありません。先に録音するか音符を追加してください。');return;}
+ mixLiveStatus('パートごとの試聴音を準備しています…');$('#mixLivePlay').textContent='準備中…';$('#mixLivePlay').disabled=true;
+ try{
+ const workerSource=KotobaMixer.workerSource+`\nself.onmessage=e=>{try{let result=[];for(const spec of e.data.specs){const r=self.KotobaMixer.mix({bpm:e.data.bpm,masterBoost:1,instrumentBoost:e.data.inst,tracks:[spec.track]});if(r)result.push({id:spec.id,samples:r.samples,sr:r.sampleRate});}self.postMessage(result,result.map(x=>x.samples.buffer));}catch(error){self.postMessage({error:String(error.message||error)})}};`;
+ const outputs=await new Promise((resolve,reject)=>{if(typeof Worker==='undefined'){Promise.resolve().then(()=>specs.map(spec=>{const r=KotobaMixer.mix({bpm:state.bpm,masterBoost:1,instrumentBoost:instrumentBoost(),tracks:[spec.track]});return r?{id:spec.id,samples:r.samples,sr:r.sampleRate}:null}).filter(Boolean)).then(resolve,reject);return;}
+ const u=URL.createObjectURL(new Blob([workerSource],{type:'text/javascript'}));const w=new Worker(u);URL.revokeObjectURL(u);liveWorker=w;liveReject=reject;w.onmessage=e=>{w.terminate();if(liveWorker===w)liveWorker=null;liveReject=null;if(e.data?.error)reject(new Error(e.data.error));else resolve(e.data);};w.onerror=e=>{w.terminate();if(liveWorker===w)liveWorker=null;liveReject=null;reject(new Error(e.message));};w.postMessage({specs,bpm:state.bpm,inst:instrumentBoost()});});
+ if(serial!==liveSerial)return;
+ const master=ctx.createGain(),lim=ctx.createDynamicsCompressor();master.gain.value=masterBoost();lim.threshold.value=-10;lim.ratio.value=5;lim.knee.value=18;master.connect(lim);lim.connect(ctx.destination);
+ const t0=ctx.currentTime+.085,stems=new Map();liveSession={ctx,stems,master,start:t0,fromBeat,songEnd:songEndBeat()};
+ for(const o of outputs){if(!o?.samples?.length)continue;const buff=ctx.createBuffer(1,o.samples.length,o.sr);buff.copyToChannel(o.samples,0);const offset=fromBeat*60/state.bpm;if(offset>=buff.duration)continue;
+ const src=ctx.createBufferSource();src.buffer=buff;const low=ctx.createBiquadFilter(),mid=ctx.createBiquadFilter(),high=ctx.createBiquadFilter(),comp=ctx.createDynamicsCompressor(),pan=ctx.createStereoPanner(),volume=ctx.createGain(),automation=ctx.createGain(),dA=ctx.createDelay(.5),dB=ctx.createDelay(.5),reverbA=ctx.createGain(),reverbB=ctx.createGain();
+ low.type='lowshelf';low.frequency.value=150;mid.type='peaking';mid.frequency.value=1100;mid.Q.value=.85;high.type='highshelf';high.frequency.value=5300;comp.attack.value=.004;comp.release.value=.17;dA.delayTime.value=.107;dB.delayTime.value=.241;
+ src.connect(low);low.connect(mid);mid.connect(high);high.connect(comp);comp.connect(pan);pan.connect(volume);volume.connect(automation);automation.connect(master);
+ pan.connect(dA);pan.connect(dB);dA.connect(reverbA);dB.connect(reverbB);reverbA.connect(volume);reverbB.connect(volume);
+ const stem={source:src,low,mid,high,comp,pan,volume,automation,reverbA,reverbB};stems.set(o.id,stem);
+ if(o.id==='__chords__'){volume.gain.value=.26;pan.pan.value=0;}else{const tr=state.tracks.find(t=>t.id===o.id);if(tr){liveUpdateChannel(tr);}}
+ src.start(t0,offset);
+ }
+ if(!stems.size){liveStop();mixLiveStatus('指定した再生位置には音がありません。');return;}
+ isPlaying=true;playStartCtx=t0;playStartBeat=fromBeat;mixLiveStatus('再生中。ダイヤルで変更した音がすぐに聞こえます。');tick();
+ }catch(error){if(serial===liveSerial){console.error(error);mixLiveStatus('リアルタイム再生に失敗: '+String(error.message).slice(0,120));liveStop();}}
+ finally{if($('#mixLivePlay'))$('#mixLivePlay').disabled=false;}
+}
+function adjustRotary(button,val,commit=true){const tr=state.tracks.find(t=>t.id===button.dataset.rotary);if(!tr)return;const min=+button.dataset.rmin,max=+button.dataset.rmax,step=+button.dataset.rstep,key=button.dataset.rkey,v=Math.round(clamp(val,min,max)/step)*step,value=+clamp(v,min,max).toFixed(3);
+ if(button.dataset.rvolume==='1')tr.volume=value;else mixCfg(tr)[key]=value;
+ const rot=-135+(value-min)/(max-min)*270;button.style.setProperty('--rot',rot+'deg');button.setAttribute('aria-valuenow',value);const valText=button.closest('.mixKnobCard')?.querySelector('.knobVal');if(valText)valText.textContent=value+(key==='volume'?'×':['low','mid','high'].includes(key)?'dB':'');liveUpdateChannel(tr);if(commit)saveSilent();
+}
+function initStudio45(){
+ $('#topScoreView').onclick=()=>{composeUserChoseScore=true;studioReturnScore();studio45ComposeSwitch();};
+ $('#topDetailView').onclick=()=>{composeUserChoseScore=false;studioOpenDetail(state.selectedTrack);studio45ComposeSwitch();};
+ $('#topJumpRecording').onclick=()=>{$('#recordCard').scrollIntoView({behavior:'smooth',block:'start'});};
+ $('#scoreOpenDetail').addEventListener('click',()=>studio45ComposeSwitch());
+ $('#workbenchBack').addEventListener('click',()=>{composeUserChoseScore=true;studio45ComposeSwitch();});
+ $('#arrangeRecordTrack').onchange=e=>{if(!state.tracks.some(t=>t.id===e.target.value))return;scoreSelectTrack(e.target.value);renderArrangePitch();};
+ $('#arrangeRecordBtn').onclick=()=>{const id=$('#arrangeRecordTrack').value;if(mediaRecorder?.state==='recording'||recordPreparing){startRecording();return;}if(id!==state.selectedTrack)scoreSelectTrack(id);$('#recordStart').value=String(studioPlaces().find(x=>x.id===studio().activeSection)?.start||0);$('#recordMode').value='range';startRecording();};
+ $('#arrangeImportBtn').onclick=()=>{const id=$('#arrangeRecordTrack').value;if(id!==state.selectedTrack)scoreSelectTrack(id);$('#recordStart').value=String(studioPlaces().find(x=>x.id===studio().activeSection)?.start||0);$('#audioCaptureFile').click();};
+ $('#arrangeHearBtn').onclick=()=>{const id=$('#arrangeRecordTrack').value;if(id!==state.selectedTrack)scoreSelectTrack(id);hearVoice();};
+ $('#arrangeReanalyzeBtn').onclick=()=>{const id=$('#arrangeRecordTrack').value;if(id!==state.selectedTrack)scoreSelectTrack(id);reconvert();};
+ $('#arrangeToRoll').onclick=()=>{const a=studioPlaces().find(x=>x.id===studio().activeSection);const id=$('#arrangeRecordTrack').value;studioChangeTab('compose');studioOpenDetail(id);if(a){scorePositionFocus(a.start);$('#rollWrap').scrollLeft=Math.max(0,a.start*CELL_W-20)}studio45ComposeSwitch();};
+ $('#arrangePitchSvg').addEventListener('click',e=>{const n=e.target.closest('[data-pitch-note]');if(!n)return;studioChangeTab('compose');studioOpenDetail(n.dataset.pitchTrack,n.dataset.pitchNote);studio45ComposeSwitch();});
+ $('#arrangePitchSvg').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.target.dispatchEvent(new MouseEvent('click',{bubbles:true}));}});
+ $('#studioSections').addEventListener('click',()=>requestAnimationFrame(renderArrangePitch));
+ $('#mixLivePlay').onclick=()=>{if(liveSession){stop();mixLiveStatus('停止しました。');}else playLiveMix(+$('#mixSeek').value||0);};
+ $('#mixLiveStop').onclick=()=>{stop();mixLiveStatus('停止しました。');};
+ $('#mixSeek').addEventListener('pointerdown',()=>mixSeekDragging=true);$('#mixSeek').addEventListener('touchstart',()=>mixSeekDragging=true,{passive:true});$('#mixSeek').addEventListener('input',e=>{$('#mixSeekText').textContent=(Math.floor(+e.target.value/studioBarBeats())+1)+'小節目';});
+ $('#mixSeek').addEventListener('change',e=>{mixSeekDragging=false;if(liveSession)playLiveMix(+e.target.value);});$('#mixSeek').addEventListener('pointerup',()=>mixSeekDragging=false);$('#mixSeek').addEventListener('touchend',()=>mixSeekDragging=false,{passive:true});
+ // The native knob can be dragged vertically; +/- provides precise iPad taps and keyboard access.
+ let drag=null;const board=$('#studioMixer');board.addEventListener('pointerdown',e=>{const b=e.target.closest('[data-rotary]');if(!b)return;e.preventDefault();drag={b,y:e.clientY,initial:+b.getAttribute('aria-valuenow'),id:e.pointerId};b.setPointerCapture(e.pointerId);});
+ board.addEventListener('pointermove',e=>{if(!drag||drag.id!==e.pointerId)return;const v=drag.initial+(drag.y-e.clientY)*(+drag.b.dataset.rmax- +drag.b.dataset.rmin)/175;adjustRotary(drag.b,v,false);});
+ const end=e=>{if(drag&&drag.id===e.pointerId){saveSilent();drag=null;}};board.addEventListener('pointerup',end);board.addEventListener('pointercancel',end);
+ board.addEventListener('click',e=>{const b=e.target.closest('[data-knobstep]');if(!b)return;const r=b.closest('.mixKnobCard')?.querySelector('[data-rotary]');if(r)adjustRotary(r,+r.getAttribute('aria-valuenow')+(+r.dataset.rstep)*(+b.dataset.knobstep));});
+ board.addEventListener('keydown',e=>{const b=e.target.closest('[data-rotary]');if(!b)return;if(!['ArrowUp','ArrowDown','ArrowRight','ArrowLeft','PageUp','PageDown'].includes(e.key))return;e.preventDefault();const dir=['ArrowUp','ArrowRight','PageUp'].includes(e.key)?1:-1;adjustRotary(b,+b.getAttribute('aria-valuenow')+dir*(e.key.startsWith('Page')?10:1)*(+b.dataset.rstep));});
+ const updateSeek=()=>{if($('#mixSeek'))$('#mixSeek').max=Math.max(1,songEndBeat());};
+ document.querySelectorAll('[data-tab="mix"]').forEach(b=>b.addEventListener('click',updateSeek));
+ studio45ComposeSwitch();renderArrangePitch();updateSeek();
+}
+
 // Start after existing project restore; leave 3.x IndexedDB keys untouched for migration.
 studioInitEvents();
 studioReferenceEvents();
 initWorkbench();initTouchWorkbench();
-fineInit();
+fineInit();initStudio45();
 // Project recovery calls studioRender() after IndexedDB restoration completes.
 studioRender();vaultRefresh();
 
