@@ -1,5 +1,5 @@
-/* Kotoba Studio v4.0.0 - installable offline app shell */
-const CACHE='kotoba-studio-shell-v4.0.0';
+/* Kotoba Studio v4.2.0 - installable offline app shell */
+const CACHE='kotoba-studio-shell-v4.2.0';
 const ASSETS=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',event=>{
  event.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting()));
