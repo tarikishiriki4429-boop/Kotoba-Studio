@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Kotoba Studio"/>
 <link rel="manifest" href="manifest.webmanifest"/>
 <link rel="apple-touch-icon" href="icon-192.png"/>
-<title>Kotoba Studio v4.3.0 — 音楽制作</title>
+<title>Kotoba Studio v4.4.0 — 音楽制作</title>
 <style>
 :root{--bg:#0b0d12;--panel:#141821;--panel2:#1b202b;--line:#2d3442;--text:#f5f7fa;--sub:#9aa6b8;--accent:#7ad7ff;--danger:#ff6f7d;--ok:#86e39b;--cellW:30px;--cellH:24px;--keysW:74px}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -132,12 +132,69 @@ header{position:relative}.brand{font-size:23px}.rollWrap{height:54vh;min-height:
 .laneBoard.laneCollapsed .laneHeading strong{margin:0}
 .editorCard.expanded.workbenchMode .laneBoard{top:0}
 @media(max-width:720px){.editorCard.workbenchMode .laneBoard{top:53px}.editorCard.workbenchMode .arrangementOverview{max-height:122px}.laneActions{justify-content:flex-start;gap:4px}.laneActions button{font-size:11px;padding:5px 7px;min-height:31px}.laneBoard .laneHeading .muted{display:none}}
+
+/* v4.4 iPad-first editing: no floating panel on top of the piano roll */
+/* score view is for lyrics and overview; workbench is the only detailed editor */
+.editorCard:not(.workbenchMode) .workbenchBar,
+.editorCard:not(.workbenchMode) .laneBoard,
+.editorCard:not(.workbenchMode) #editorTop,
+.editorCard:not(.workbenchMode) .touchWorkbench,
+.editorCard:not(.workbenchMode) #rollWrap,
+.editorCard:not(.workbenchMode) #velocitySection,
+.editorCard:not(.workbenchMode) .notePanel{display:none!important}
+
+body.detailActive #tracksCard{display:none!important}
+body.detailActive.showTracks #tracksCard{display:block!important}
+.quickTrackPicker{display:flex;flex-direction:column;gap:3px;font-size:12px;color:#bed8eb;font-weight:650}
+.quickTrackPicker select{min-height:44px;min-width:170px;color:#edfbff;background:#192b3a;border:1px solid #54718a;border-radius:9px;padding:8px}
+@media(max-width:740px){.quickTrackPicker{min-width:130px;flex:1}.quickTrackPicker select{min-width:0;width:100%}}
+
+.editorCard.workbenchMode #scoreDesk{display:none!important}
+.touchStepLabel{display:flex;align-items:center;gap:7px;color:#c4d6e9;font-size:12px;font-weight:750}.touchStepLabel select{min-height:43px;background:#162e43;color:#e5f5ff;border:1px solid #5e88a1;border-radius:9px;padding:6px 8px}
+.editorCard.workbenchMode .laneBoard,.editorCard.expanded.workbenchMode .laneBoard{position:relative!important;top:auto!important;z-index:auto!important;box-shadow:none!important}
+.laneBoard{border-color:#354a60}.laneBoard .laneHeading{padding:8px 10px}
+.laneBoard.laneCollapsed .laneHeading{padding:8px 12px}
+.laneBoard.laneCollapsed .laneActions{width:auto;justify-content:flex-start}
+.laneBoard.laneCollapsed #lanePrev,.laneBoard.laneCollapsed #laneNext,.laneBoard.laneCollapsed #lanePageLabel{display:none}
+.editorCard.workbenchMode .arrangementOverview{max-height:min(22vh,180px)}
+.advancedEditorControls{width:100%;margin-top:5px;border:1px solid #34485c;background:#101c28;border-radius:10px}
+.advancedEditorControls summary{padding:11px 14px;cursor:pointer;color:#d4e9fb;font-size:14px;font-weight:750;list-style:inside;min-height:44px}
+.advancedEditorInner{display:flex;flex-wrap:wrap;align-items:flex-end;gap:7px;padding:10px;border-top:1px solid #34485c}
+.advancedEditorInner button{min-height:40px}
+.touchWorkbench{border:1px solid #375876;border-radius:13px;background:#132131;padding:12px;margin:0 0 10px}
+.touchModeBar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin:0 0 11px}
+.touchPills{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
+.touchPills button{min-height:44px;padding:7px 11px;border:1px solid #48596e;background:#263348;color:#d7e5f3;border-radius:9px;font-size:13px;touch-action:manipulation}
+.touchPills button.toolOn,.touchPills button.presetOn{background:#d9f2fc;color:#11283b;border-color:#b8e9fc;font-weight:850}
+.touchControlRow{display:flex;gap:13px;align-items:stretch;flex-wrap:wrap}
+.touchDpadGroup{padding:10px 13px;border:1px solid #415b70;border-radius:12px;background:#0e1824;min-width:174px}
+.selectorGroup{border-color:#4f86ac}.nudgeGroup{border-color:#877353}
+.touchGroupTitle{display:flex;flex-direction:column;gap:3px;margin-bottom:8px}
+.touchGroupTitle strong{font-size:14px}.touchGroupTitle span{font-size:11px;color:#b7c9d8}
+.touchDpad{display:grid;grid-template-columns:repeat(3,44px);grid-template-rows:repeat(3,44px);gap:4px;justify-content:center}
+.touchDpad button,.touchDpad .dpadCenter{display:grid;place-items:center;min-width:44px;min-height:44px;padding:0;border-radius:9px;font-size:23px;border:1px solid #6c94b3;background:#274056;color:white;touch-action:manipulation;user-select:none}
+.nudgeGroup .touchDpad button{background:#483e31;border-color:#948365}
+.touchDpad button:active{filter:brightness(1.4)}.touchDpad button:focus-visible{outline:3px solid #f6db7b}
+.touchDpad button:disabled{opacity:.3}
+.touchDpad .dpadUp{grid-column:2;grid-row:1}.touchDpad .dpadLeft{grid-column:1;grid-row:2}.touchDpad .dpadCenter{grid-column:2;grid-row:2;background:#1b2940;border-color:#536c88}.touchDpad .dpadRight{grid-column:3;grid-row:2}.touchDpad .dpadDown{grid-column:2;grid-row:3}
+.touchDpad .dpadNudgeCenter{font-size:19px;color:#c6ab76}
+.touchSelectedInfo{display:flex;flex-direction:column;justify-content:center;gap:8px;flex:1 1 220px;min-width:170px;background:#0e1b2a;border-radius:10px;border:1px solid #374f64;padding:12px}
+.touchSelectedInfo strong{font-size:21px;color:#b4eaff;word-break:break-word}.touchSelectedInfo>span:not(.quickLabel){font-size:12px;color:#bbd0e0;line-height:1.55}
+.touchQuickActions{display:flex;gap:7px;flex-wrap:wrap}.touchQuickActions button{min-height:44px;padding:8px 11px}
+.touchHelp{font-size:12px;line-height:1.65;color:#abc4d7;margin:9px 0 0}.touchHelp span{color:#99d9ef}
+.note.selected{z-index:16!important;outline:3px solid #fff6c0;outline-offset:1px;box-shadow:0 0 0 4px #182028,0 4px 10px #0009;background:#95e5ff!important;border-color:#fff5b9!important;color:#051c30}
+.rollWrap.panTool .note{pointer-events:none!important}.rollWrap.panTool,.rollWrap.panTool .grid{touch-action:pan-x pan-y}
+.rollWrap.addTool .grid{cursor:crosshair}
+#editorCard .rollWrap{scrollbar-width:auto;overscroll-behavior:contain}
+@media(max-width:760px){.touchWorkbench{padding:9px}.touchModeBar{gap:7px}.touchPills{width:100%;justify-content:flex-start}.touchPills button{font-size:12px;min-height:44px;padding:7px}.touchControlRow{gap:8px}.touchDpadGroup{min-width:0;padding:9px;flex:0 0 calc(50% - 4px)}.touchDpad{grid-template-columns:repeat(3,40px);grid-template-rows:repeat(3,44px);gap:3px}.touchDpad button,.touchDpad .dpadCenter{min-width:40px}.touchSelectedInfo{flex-basis:100%}.editorCard.workbenchMode .arrangementOverview{max-height:135px}}
+@media(max-width:370px){.touchDpad{grid-template-columns:repeat(3,36px);grid-template-rows:repeat(3,43px);gap:2px}.touchDpad button,.touchDpad .dpadCenter{min-width:36px;min-height:43px}.touchGroupTitle strong{font-size:12px}}
+
 </style>
 </head>
 <body>
 <header>
 <div class="headerRow">
-<div class="brand">♫ Kotoba Studio <span class="badge">v4.3.0</span></div>
+<div class="brand">♫ Kotoba Studio <span class="badge">v4.4.0</span></div>
 <button class="primary" id="playBtn">▶ 再生</button><button id="stopBtn">■ 停止</button>
 
 <span class="time" id="time">00:00.0</span>
@@ -180,21 +237,66 @@ header{position:relative}.brand{font-size:23px}.rollWrap{height:54vh;min-height:
   <label class="small">聴き比べるパート<select id="refTrackSelect"></select></label><button id="playTrackRef">▶ このパート</button>
   <label class="small">基準音<select id="refPitchSelect"></select></label><button id="playRefPitch">♪ 基準音</button><button id="refChordPreview">♪ 現在のコード</button>
  </div>
- <div class="refControls minor"><label class="inlineTick"><input type="checkbox" id="ghostNotes" checked/> 他パートの音符を重ねる</label><label class="small ghostSelector">参照するパート<select id="ghostMode"><option value="all">全パート</option><option value="lead">リードボーカルのみ</option><option value="reference">聴き比べるパートのみ</option></select></label>
+ <div class="refControls minor"><label class="inlineTick"><input type="checkbox" id="ghostNotes" checked/> 他パートの音符を重ねる</label><label class="small ghostSelector">参照するパート<select id="ghostMode"><option value="vocal-selected" selected>歌＋選択パート</option><option value="all">全パート</option><option value="lead">リードボーカルのみ</option><option value="reference">聴き比べるパートのみ</option></select></label>
   <button id="scorePrev">← 前の8小節</button><span id="scorePageLabel" class="muted">1〜8小節</span><button id="scoreNext">次の8小節 →</button><button class="primary" id="playRefFrom">▶ ここから全パート再生</button><span id="scoreCursorLabel" class="muted">開始: 1小節目</span></div>
  <div id="refScoreDisplay" class="scoreDisplay"><div id="refScoreRows" class="scoreRows"></div></div>
  <p id="cohesionSummary" class="cohesion">共通のBPM・キー・コード進行を参照します。</p>
 </div>
-<div class="workbenchBar" id="workbenchBar"><div><span class="quickLabel">MULTITRACK / DETAIL EDITOR</span><strong>詳細音編集</strong><p id="workbenchInfo" class="muted">トラック、再生位置、歌詞を同期します。</p></div><div class="workbenchActions"><button id="workbenchBack">← 譜面へ戻る</button><button id="cursorToRoll">⇢ 再生位置に移動</button></div></div>
+<div class="workbenchBar" id="workbenchBar"><div><span class="quickLabel">MULTITRACK / DETAIL EDITOR</span><strong>詳細音編集</strong><p id="workbenchInfo" class="muted">トラック、再生位置、歌詞を同期します。</p></div><div class="workbenchActions"><label class="small quickTrackPicker">編集中のパート<select id="editTrackQuick" aria-label="編集中のパートを切り替え"></select></label><button id="workbenchTracks">☷ トラック管理</button><button id="workbenchBack">← 譜面へ戻る</button><button id="cursorToRoll">⇢ 再生位置に移動</button></div></div>
 <div class="laneBoard" id="laneBoard"><div class="laneHeading"><div><strong>全パートの時間軸</strong><span class="muted">音を押すと、そのパートの同じ位置を詳細編集できます。重なる音も同時に表示。</span></div><div class="laneActions"><button id="lanePlayLead" title="リードボーカルを試聴">▶ 歌</button><button id="lanePlayPitch" title="選んだ基準音を試聴">♪ 基準音</button><button id="lanePlayFrom" title="赤いカーソルの位置から全パートを再生">▶ 全パート</button><button id="laneToggle" aria-expanded="true">時間軸を畳む</button><button id="lanePrev">← 8小節</button><span id="lanePageLabel" class="muted">1–8小節</span><button id="laneNext">8小節 →</button></div></div><div id="arrangementOverview" class="arrangementOverview"><div id="arrangementRows" class="arrangementRows"></div></div></div>
 <div class="editorTop" id="editorTop">
 <div class="grow"><h2 id="editorTitle">選択トラックの音程を編集</h2><div class="muted" id="editorSub">空きマスをダブルタップで追加。音符を上下左右にドラッグして編集できます。</div></div>
-<label class="small">表示<select id="labelMode"><option value="letter">CDE</option><option value="solfege">ドレミ</option></select></label>
+<details class="advancedEditorControls" id="advancedEditorControls"><summary>⚙ 詳細設定・従来の編集ボタン</summary><div class="advancedEditorInner"><label class="small">表示<select id="labelMode"><option value="letter">CDE</option><option value="solfege">ドレミ</option></select></label>
 <label class="small">編集単位<select id="snap"><option value="0.001">自由（0.001拍）</option><option value="0.01">0.01拍</option><option value="0.03125">128分</option><option value="0.0625">64分</option><option value="0.125">32分</option><option selected="" value="0.25">16分</option><option value="0.5">8分</option><option value="1">4分</option></select></label>
 <label class="small">長さの刻み<select id="lengthStep"><option value="0.001">微調整（0.001拍）</option><option selected value="0.01">0.01拍</option><option value="0.03125">128分</option><option value="0.0625">64分</option><option value="0.125">32分</option><option value="0.25">16分</option></select></label><button id="halveNotes">長さを半分</button><label class="small">音域<select id="rangeMode"><option value="extreme">超広域 C−1〜G9</option><option value="full">広域 C0〜C9</option><option selected="" value="normal">C1〜C8</option><option value="vocal">声域 C2〜C6</option></select></label>
 <div class="zoomTools"><button id="zoomOutBtn">−</button><button id="zoomResetBtn">100%</button><button id="zoomInBtn">＋</button><span class="zoomLabel" id="zoomLabel">100%</span><button id="expandEditorBtn">⛶ 拡大編集</button></div><button id="addNoteBtn">＋ 音を追加</button><button id="octDown">−1オクターブ</button><button id="octUp">＋1オクターブ</button><button class="danger" id="deleteNote">選択音を削除</button>
-<button id="multiSelectBtn" aria-pressed="false">範囲選択：OFF</button><button id="selectAllNotes">全音を選択</button><button id="clearSelection">選択解除</button><span id="selectionCount" class="selectionCount"></span><button id="playFromSelectedBtn">▶ 選択した音から再生</button><button id="soloPlayBtn">▶ このパート</button><button id="undoBtn">↶ 元に戻す</button><button id="redoBtn">↷ やり直す</button></div>
-<div class="muted" style="margin:0 0 8px">トラックパッド：空きマスをドラッグで範囲選択、Shift／⌘＋クリックで追加選択。選択バーをドラッグでまとめて移動、Deleteで削除。タッチ操作は「範囲選択：ON」で範囲を指定。<br/>ヴァイオリンは長い音に緩やかなビブラートと余韻がつきます。長さの刻みは移動の編集単位と別設定。「長さを半分」で短縮、長さ（拍）は最小0.001まで入力可能。 / ダブルタップ＝その場所に音符追加 / 2本指ピンチ＝拡大・縮小（50〜300%）</div><div class="rollWrap" id="rollWrap"><div class="roll" id="roll"></div></div>
+<button id="multiSelectBtn" aria-pressed="false">範囲選択：OFF</button><button id="selectAllNotes">全音を選択</button><button id="clearSelection">選択解除</button><span id="selectionCount" class="selectionCount"></span><button id="playFromSelectedBtn">▶ 選択した音から再生</button><button id="soloPlayBtn">▶ このパート</button><button id="undoBtn">↶ 元に戻す</button><button id="redoBtn">↷ やり直す</button></div></details></div>
+<div class="touchWorkbench" id="touchWorkbench">
+ <div class="touchModeBar">
+  <div class="touchPills" role="group" aria-label="ピアノロールの操作モード">
+   <button type="button" class="toolOn" id="toolPick" aria-pressed="true">☝ 音を選ぶ</button>
+   <button type="button" id="toolPan" aria-pressed="false">✋ スクロール</button>
+   <button type="button" id="toolAdd" aria-pressed="false">＋ タップで追加</button>
+  </div>
+  <div class="touchPills" role="group" aria-label="ほかのトラックの参照表示">
+   <button type="button" id="vocalFocusBtn" class="presetOn" aria-pressed="true">♪ 歌＋編集中</button>
+   <button type="button" id="allPartsGhostBtn" aria-pressed="false">全パート</button>
+   <button type="button" id="ghostNoneBtn" aria-pressed="false">参照なし</button>
+  </div>
+  <label class="touchStepLabel">左右移動の細かさ <select id="touchStep" aria-label="移動十字キーの左右移動幅">
+   <option value="0.001">0.001拍</option><option value="0.01">0.01拍</option><option value="0.03125">128分</option>
+   <option value="0.0625">64分</option><option value="0.125">32分</option><option value="0.25" selected>16分</option><option value="0.5">8分</option>
+  </select></label>
+ </div>
+ <div class="touchControlRow">
+  <section class="touchDpadGroup selectorGroup" aria-label="音符選択の十字キー">
+   <div class="touchGroupTitle"><strong>① 音を選択</strong><span>音符は動かない</span></div>
+   <div class="touchDpad" role="group" aria-label="現在の音から上下左右の音を選択">
+    <button type="button" data-note-select="up" aria-label="現在の音より上の音を選択" class="dpadUp">↑</button>
+    <button type="button" data-note-select="left" aria-label="現在の音より前の音を選択" class="dpadLeft">←</button>
+    <button type="button" id="cycleOverlaps" aria-label="重なった音符を次へ切り替える" class="dpadCenter" title="重なった音を順番に選択">◎</button>
+    <button type="button" data-note-select="right" aria-label="現在の音より次の音を選択" class="dpadRight">→</button>
+    <button type="button" data-note-select="down" aria-label="現在の音より下の音を選択" class="dpadDown">↓</button>
+   </div>
+  </section>
+  <section class="touchDpadGroup nudgeGroup" aria-label="音符移動の十字キー">
+   <div class="touchGroupTitle"><strong>② 選択音を移動</strong><span>1タップで1刻み</span></div>
+   <div class="touchDpad" role="group" aria-label="選択した音の音程と開始位置を変更">
+    <button type="button" data-note-nudge="up" aria-label="選択音を半音上げる" class="dpadUp">↑</button>
+    <button type="button" data-note-nudge="left" aria-label="選択音を1刻み左へ移動" class="dpadLeft">←</button>
+    <span class="dpadCenter dpadNudgeCenter" aria-label="編集単位を使用">✦</span>
+    <button type="button" data-note-nudge="right" aria-label="選択音を1刻み右へ移動" class="dpadRight">→</button>
+    <button type="button" data-note-nudge="down" aria-label="選択音を半音下げる" class="dpadDown">↓</button>
+   </div>
+  </section>
+  <div class="touchSelectedInfo" aria-live="polite">
+   <span class="quickLabel">SELECTED NOTE</span><strong id="touchNoteStatus">音符を選択</strong>
+   <span id="touchNavHint">十字キーで次の音に移動。◎で重なった音を切り替え。</span>
+   <div class="touchQuickActions"><button type="button" id="touchPreview">▶ 試聴</button><button type="button" id="touchPlayFrom">▶ ここから</button><button type="button" id="touchRemove" class="danger">削除</button></div>
+  </div>
+ </div>
+ <p class="touchHelp">編集：音符をタップして選択、ドラッグして移動。右端をつまむと長さ変更。画面移動は「✋ スクロール」。2本指ピンチで拡大縮小。<span>他パートの薄い色は参照用で、選択中のパートだけ編集されます。</span></p>
+</div><div class="rollWrap" id="rollWrap"><div class="roll" id="roll"></div></div>
 <div class="velocitySection" id="velocitySection"><div class="velocityHeading"><div><strong>ベロシティー — 音ごとの強弱</strong><span class="muted">棒の先端を上下にドラッグ。選んだ音の強さが再生と書き出しに反映されます。</span></div><span id="velocityStats" class="muted">音を選択してください</span></div><div class="velocityWrap" id="velocityWrap"><div class="velocitySurface" id="velocitySurface"></div></div></div>
 <div class="notePanel">
 <label class="small" id="notePitchWrap">音程<select id="notePitch"></select></label>
@@ -227,7 +329,7 @@ header{position:relative}.brand{font-size:23px}.rollWrap{height:54vh;min-height:
 <div class="recBox stack" id="recBox">
 <div class="row"><button class="recBtn primary" id="recBtn">● 録音</button><button id="continueRecBtn">● 選択した音から録音</button><button id="audioImportBtn">音声ファイルから取り込む</button><button id="reconvertBtn">全体を再変換</button><button id="hearVoiceBtn">元の声</button></div>
 <div class="row" style="margin-top:8px"><label class="small">設定を反映する開始（拍）<input id="analysisStart" type="number" min="0" step="0.001" value="0" style="width:100px"/></label><label class="small">終了（拍）<input id="analysisEnd" type="number" min="0" step="0.001" placeholder="終了位置" style="width:100px"/></label><button id="selectionToRange">選択音から区間を指定</button><button id="reconvertRangeBtn">この区間に設定を反映</button></div><div class="muted">下の読み取り設定を指定区間だけに適用します。複数選択では最初〜最後の間も含みます。全体を再変換すると全区間が現在の設定になります。</div>
-<input accept="audio/*" capture="microphone" hidden="" id="audioCaptureFile" type="file"/>
+<input accept="audio/*,.wav,.m4a,.mp3,.mp4,.aac,.aif,.aiff,.caf,.ogg,.flac" hidden="" id="audioCaptureFile" type="file"/>
 <div class="muted" id="recStatus">録音ボタンを押すとマイクを準備します。</div>
 <div id="micStatus" class="muted" role="status" aria-live="polite">録音開始後にマイク入力を表示します。</div><div class="meter"><i id="meterBar"></i></div>
 <div class="row">
@@ -938,13 +1040,13 @@ function renderRoll(){const roll=$('#roll'),tr=currentTrack();if(!tr)return;TOTA
 const keys=document.createElement('div');keys.className='keys';keys.style.height=height+'px';roll.appendChild(keys);const grid=document.createElement('div');grid.className='grid';grid.style.width=(TOTAL_BEATS*CELL_W)+'px';grid.style.height=height+'px';roll.appendChild(grid);
 for(let i=0;i<rows;i++){const m=hi-i,y=i*CELL_H,black=[1,3,6,8,10].includes(m%12);const k=document.createElement('div');k.className='keyLabel'+(black?' black':'');k.style.top=y+'px';k.textContent=midiLabel(m);keys.appendChild(k);const r=document.createElement('div');r.className='rowLine'+(black?' black':'');r.style.top=y+'px';r.style.height=CELL_H+'px';grid.appendChild(r)}
 for(let b=0;b<=TOTAL_BEATS;b++){const l=document.createElement('div');l.className='beatLine'+(b%studioBarBeats()===0?' bar':'');l.style.left=(b*CELL_W)+'px';grid.appendChild(l);if(b%studioBarBeats()===0){const lab=document.createElement('span');lab.className='barLabel';lab.style.left=(b*CELL_W+4)+'px';lab.textContent=String(b/studioBarBeats()+1);grid.appendChild(lab)}}
-if($('#ghostNotes')?.checked){let used=0;const ghostMode=$('#ghostMode')?.value||'all',chosenId=ghostMode==='lead'?$('#leadTrackSelect')?.value:$('#refTrackSelect')?.value;for(const other of state.tracks){if(other.id===tr.id||other.type==='drums'||(ghostMode!=='all'&&other.id!==chosenId))continue;for(const n of other.notes){if(++used>2500)break;if(n.midi<lo||n.midi>hi)continue;const mark=document.createElement('i');mark.className='ghostNote';mark.style.setProperty('--ghostColor',trackLaneColor(other));mark.title=other.name+' '+midiLabel(n.midi);mark.style.left=(n.start*CELL_W)+'px';mark.style.top=((hi-n.midi)*CELL_H+CELL_H-8)+'px';mark.style.width=Math.max(4,n.dur*CELL_W)+'px';grid.appendChild(mark)}if(used>2500)break;}}
+if($('#ghostNotes')?.checked){let used=0;const ghostMode=$('#ghostMode')?.value||'vocal-selected',leadId=$('#leadTrackSelect')?.value||state.tracks.find(t=>t.type==='voice')?.id,chosenId=ghostMode==='lead'||ghostMode==='vocal-selected'?leadId:$('#refTrackSelect')?.value;for(const other of state.tracks){if(other.id===tr.id||other.type==='drums'||(ghostMode!=='all'&&other.id!==chosenId))continue;for(const n of other.notes){if(++used>2500)break;if(n.midi<lo||n.midi>hi)continue;const mark=document.createElement('i');mark.className='ghostNote';mark.style.setProperty('--ghostColor',trackLaneColor(other));mark.title=other.name+' '+midiLabel(n.midi);mark.style.left=(n.start*CELL_W)+'px';mark.style.top=((hi-n.midi)*CELL_H+CELL_H-8)+'px';mark.style.width=Math.max(4,n.dur*CELL_W)+'px';grid.appendChild(mark)}if(used>2500)break;}}
 const selection=new Set(selectedNotes().map(n=>n.id));tr.notes.forEach(n=>{if(n.midi<lo||n.midi>hi)return;const el=document.createElement('div');el.className='note'+(selection.has(n.id)?' selected':'')+(n.uncertain||n.confidence<.82?' uncertain':'');el.dataset.id=n.id;el.style.left=(n.start*CELL_W)+'px';el.style.top=((hi-n.midi)*CELL_H+2)+'px';el.style.width=Math.max(8,n.dur*CELL_W)+'px';el.textContent=noteLabel(n,tr);const rz=document.createElement('i');rz.className='resize';el.appendChild(rz);grid.appendChild(el);attachNoteDrag(el,n,rz)});
 const ph=document.createElement('div');ph.id='playhead';ph.className='playhead';ph.style.left='0px';grid.appendChild(ph);updateEditorHeader();if($('#velocitySurface'))renderVelocityLane();}
 
 function addNoteAtGridPoint(clientX,clientY){
   const now=performance.now();
-  if(selectionMode||pinchActive||now-lastPinchEnd<450||now-lastDoubleAdd<300&&lastDoublePoint&&Math.hypot(clientX-lastDoublePoint.x,clientY-lastDoublePoint.y)<12)return false;
+  if(selectionMode||touchToolMode==='pan'||pinchActive||now-lastPinchEnd<450||now-lastDoubleAdd<300&&lastDoublePoint&&Math.hypot(clientX-lastDoublePoint.x,clientY-lastDoublePoint.y)<12)return false;
   const grid=$('#roll .grid');
   if(!grid)return false;
   const rect=grid.getBoundingClientRect();
@@ -967,7 +1069,7 @@ function initDoubleTapAdd(){
   let last={time:0,x:0,y:0,pointerType:''},downPoint=null;wrap.addEventListener('pointerdown',e=>{downPoint={id:e.pointerId,x:e.clientX,y:e.clientY}});
   const eligibleTarget=t=>!t.closest?.('.note')&&!t.closest?.('.keys')&&!t.closest?.('.keyLabel');
   wrap.addEventListener('pointerup',e=>{
-    if(selectionMode||!eligibleTarget(e.target)||pinchActive||e.pointerType==='mouse'||!downPoint||downPoint.id!==e.pointerId||Math.hypot(e.clientX-downPoint.x,e.clientY-downPoint.y)>10)return;
+    if(selectionMode||touchToolMode!=='pick'||!eligibleTarget(e.target)||pinchActive||e.pointerType==='mouse'||!downPoint||downPoint.id!==e.pointerId||Math.hypot(e.clientX-downPoint.x,e.clientY-downPoint.y)>10)return;
     const now=performance.now();
     const near=Math.hypot(e.clientX-last.x,e.clientY-last.y)<=32;
     const samePointer=last.pointerType===e.pointerType;
@@ -980,7 +1082,7 @@ function initDoubleTapAdd(){
     last={time:now,x:e.clientX,y:e.clientY,pointerType:e.pointerType};
   },{passive:false});
   wrap.addEventListener('dblclick',e=>{
-    if(selectionMode||!eligibleTarget(e.target)||pinchActive)return;
+    if(selectionMode||touchToolMode!=='pick'||!eligibleTarget(e.target)||pinchActive)return;
     e.preventDefault();
     addNoteAtGridPoint(e.clientX,e.clientY);
   },{passive:false});
@@ -992,7 +1094,7 @@ function deleteSelectedNotes(){const tr=currentTrack(),ids=new Set(selectedNotes
 function moveNoteGroup(originals,dx,dy){const snap=+state.snap||.25;let [lo,hi]=range();lo=Math.min(lo,...originals.map(o=>o.midi));hi=Math.max(hi,...originals.map(o=>o.midi));const dt=clamp(Math.round(dx/snap)*snap,-Math.min(...originals.map(o=>o.start)),7200-Math.max(...originals.map(o=>o.start+o.dur)));const dp=clamp(Math.round(-dy),lo-Math.min(...originals.map(o=>o.midi)),hi-Math.max(...originals.map(o=>o.midi)));for(const o of originals){o.note.start=o.start+dt;o.note.midi=currentTrack()?.type==='drums'?drumMidi(o.midi+dp):o.midi+dp;}}
 function attachNoteDrag(el,n,rz){
  let drag=null;
- el.onpointerdown=e=>{if(pinchActive||e.button>0)return;e.preventDefault();e.stopPropagation();const ids=selectedNotes().map(n=>n.id),toggle=e.shiftKey||e.metaKey||e.ctrlKey;
+ el.onpointerdown=e=>{if(pinchActive||e.button>0||touchToolMode==='pan')return;e.preventDefault();e.stopPropagation();const ids=selectedNotes().map(n=>n.id),toggle=e.shiftKey||e.metaKey||e.ctrlKey;
  if(toggle){setNoteSelection(ids.includes(n.id)?ids.filter(id=>id!==n.id):[...ids,n.id]);return;}
  if(!ids.includes(n.id))setNoteSelection([n.id]);else refreshSelection();
  drag={id:e.pointerId,x:e.clientX,y:e.clientY,resize:e.target===rz,serial:pinchSerial,originals:selectedNotes().map(note=>({note,start:note.start,midi:note.midi,dur:note.dur}))};el.setPointerCapture?.(e.pointerId);};
@@ -1006,7 +1108,7 @@ function attachNoteDrag(el,n,rz){
 function initMultiSelection(){const wrap=$('#rollWrap');let gesture=null;
  $('#multiSelectBtn').onclick=()=>{selectionMode=!selectionMode;wrap.classList.toggle('selecting',selectionMode);$('#multiSelectBtn').textContent='範囲選択：'+(selectionMode?'ON':'OFF');$('#multiSelectBtn').setAttribute('aria-pressed',String(selectionMode));};
  $('#selectAllNotes').onclick=()=>setNoteSelection(currentTrack()?.notes.map(n=>n.id)||[]);$('#clearSelection').onclick=()=>setNoteSelection([]);
- wrap.addEventListener('pointerdown',e=>{if(e.button>0||pinchActive||e.target.closest('.note,.keys')||(!selectionMode&&e.pointerType!=='mouse'))return;const grid=$('#roll .grid');if(!grid)return;const r=grid.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;if(x<0||y<0)return;e.preventDefault();const box=document.createElement('div');box.className='selectionBox';grid.appendChild(box);gesture={id:e.pointerId,x,y,grid,box,base:e.shiftKey||e.metaKey||e.ctrlKey?selectedNotes().map(n=>n.id):[],old:selectedNotes().map(n=>n.id),serial:pinchSerial};wrap.setPointerCapture?.(e.pointerId);setNoteSelection(gesture.base);},{passive:false});
+ wrap.addEventListener('pointerdown',e=>{if(e.button>0||pinchActive||touchToolMode!=='pick'||e.target.closest('.note,.keys')||(!selectionMode&&e.pointerType!=='mouse'))return;const grid=$('#roll .grid');if(!grid)return;const r=grid.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;if(x<0||y<0)return;e.preventDefault();const box=document.createElement('div');box.className='selectionBox';grid.appendChild(box);gesture={id:e.pointerId,x,y,grid,box,base:e.shiftKey||e.metaKey||e.ctrlKey?selectedNotes().map(n=>n.id):[],old:selectedNotes().map(n=>n.id),serial:pinchSerial};wrap.setPointerCapture?.(e.pointerId);setNoteSelection(gesture.base);},{passive:false});
  wrap.addEventListener('pointermove',e=>{if(!gesture||gesture.id!==e.pointerId)return;if(pinchActive||gesture.serial!==pinchSerial){setNoteSelection(gesture.old);gesture.box.remove();gesture=null;return;}e.preventDefault();const g=gesture,r=g.grid.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,left=Math.min(x,g.x),top=Math.min(y,g.y),right=Math.max(x,g.x),bottom=Math.max(y,g.y);Object.assign(g.box.style,{left:left+'px',top:top+'px',width:(right-left)+'px',height:(bottom-top)+'px'});const hi=range()[1],ids=currentTrack().notes.filter(n=>n.start*CELL_W<=right&&(n.start*CELL_W+Math.max(8,n.dur*CELL_W))>=left&&(hi-n.midi)*CELL_H+2<=bottom&&(hi-n.midi+1)*CELL_H>=top).map(n=>n.id);setNoteSelection([...g.base,...ids]);},{passive:false});
  const finish=e=>{if(!gesture||gesture.id!==e.pointerId)return;if(e.type==='pointercancel')setNoteSelection(gesture.old);gesture.box.remove();gesture=null;};wrap.addEventListener('pointerup',finish);wrap.addEventListener('pointercancel',finish);
  document.addEventListener('keydown',e=>{if(e.target.matches('input,select,textarea,[contenteditable="true"]'))return;
@@ -1015,9 +1117,9 @@ function initMultiSelection(){const wrap=$('#rollWrap');let gesture=null;
  else if(e.key==='Escape'){setNoteSelection([]);cancelRecordPreparation();}
  else if(e.key.startsWith('Arrow')&&selectedNotes().length){e.preventDefault();const d=e.shiftKey?4:1,notes=selectedNotes().map(note=>({note,start:note.start,midi:note.midi,dur:note.dur}));moveNoteGroup(notes,e.key==='ArrowRight'?+state.snap*d:e.key==='ArrowLeft'?-state.snap*d:0,e.key==='ArrowUp'?-d:e.key==='ArrowDown'?d:0);renderRoll();saveSilent();}});
 }
-function renderNotePanel(){const count=selectedNotes().length;$('#selectionCount').textContent=count?count+'音を選択中':'';const n=currentNote(),tr=currentTrack(),isDrum=tr?.type==='drums';['notePitch','drumType','noteStart','noteDur','noteVel','previewNote','deleteNote','halveNotes'].forEach(id=>{const e=$('#'+id);if(e)e.disabled=(id==='deleteNote'||id==='halveNotes')?!count:!n||count>1});if($('#notePitchWrap'))$('#notePitchWrap').hidden=isDrum;if($('#drumTypeWrap'))$('#drumTypeWrap').hidden=!isDrum;if($('#noteSyllable')){$('#noteSyllable').value=n?.lyric||'';$('#noteSyllable').disabled=!n||count>1;}if(!n)return;if(isDrum)$('#drumType').value=String(DRUM_NAMES[n.midi]?n.midi:drumMidi(n.midi));else $('#notePitch').value=n.midi;$('#noteStart').value=+n.start.toFixed(4);$('#noteDur').value=+n.dur.toFixed(4);$('#noteVel').value=n.vel??.75}
+function renderNotePanel(){if(typeof renderTouchSelectedStatus==='function')renderTouchSelectedStatus();const count=selectedNotes().length;$('#selectionCount').textContent=count?count+'音を選択中':'';const n=currentNote(),tr=currentTrack(),isDrum=tr?.type==='drums';['notePitch','drumType','noteStart','noteDur','noteVel','previewNote','deleteNote','halveNotes'].forEach(id=>{const e=$('#'+id);if(e)e.disabled=(id==='deleteNote'||id==='halveNotes')?!count:!n||count>1});if($('#notePitchWrap'))$('#notePitchWrap').hidden=isDrum;if($('#drumTypeWrap'))$('#drumTypeWrap').hidden=!isDrum;if($('#noteSyllable')){$('#noteSyllable').value=n?.lyric||'';$('#noteSyllable').disabled=!n||count>1;}if(!n)return;if(isDrum)$('#drumType').value=String(DRUM_NAMES[n.midi]?n.midi:drumMidi(n.midi));else $('#notePitch').value=n.midi;$('#noteStart').value=+n.start.toFixed(4);$('#noteDur').value=+n.dur.toFixed(4);$('#noteVel').value=n.vel??.75}
 function updateEditorHeader(){const tr=currentTrack();$('#editorTitle').textContent=`音を編集 — ${tr?.name||''}`;$('#editorSub').textContent=tr?.type==='drums'?`ドラム / ${tr.notes.length}音 / 音を選ぶと下で「ドン・タッ・チッ・シャー」を変更できます`:`${TYPES[tr?.type]||''} / ${tr?.notes.length||0}音 / ダブルタップで追加・音符を直接ドラッグ`}
-function renderAll(){renderTracks();renderPitchSelect();renderRoll();renderNotePanel();$('#bpm').value=state.bpm;$('#labelMode').value=state.labelMode;$('#snap').value=state.snap;$('#lengthStep').value=state.lengthStep||.01;$('#rangeMode').value=state.rangeMode;if($('#masterBoost'))$('#masterBoost').value=state.masterBoost||2;if($('#outputMode'))$('#outputMode').value=state.outputMode||'compat';if($('#zoomLabel'))$('#zoomLabel').textContent=Math.round((state.zoom||1)*100)+'%';if($('#zoomResetBtn'))$('#zoomResetBtn').textContent=Math.round((state.zoom||1)*100)+'%';for(const id of ['countInBeats','countInSound','recordBacking','instrumentBoost','monitorLevel','autoHearRecording','trackingMode','sensitivity','recognitionRange','stabilize','pitchCoreFilter','intermediateFilter','mergeNearby','minNoteMs','quantize','inputBoost']){if(state[id]!=null&&$('#'+id))$('#'+id).value=state[id];}if(window.__studioRefReady){requestScoreRefresh();if(typeof fineRefresh==='function')fineRefresh();}}
+function renderAll(){renderTracks();renderPitchSelect();renderRoll();renderNotePanel();if($('#touchStep'))$('#touchStep').value=String(state.snap||.25);$('#bpm').value=state.bpm;$('#labelMode').value=state.labelMode;$('#snap').value=state.snap;$('#lengthStep').value=state.lengthStep||.01;$('#rangeMode').value=state.rangeMode;if($('#masterBoost'))$('#masterBoost').value=state.masterBoost||2;if($('#outputMode'))$('#outputMode').value=state.outputMode||'compat';if($('#zoomLabel'))$('#zoomLabel').textContent=Math.round((state.zoom||1)*100)+'%';if($('#zoomResetBtn'))$('#zoomResetBtn').textContent=Math.round((state.zoom||1)*100)+'%';for(const id of ['countInBeats','countInSound','recordBacking','instrumentBoost','monitorLevel','autoHearRecording','trackingMode','sensitivity','recognitionRange','stabilize','pitchCoreFilter','intermediateFilter','mergeNearby','minNoteMs','quantize','inputBoost']){if(state[id]!=null&&$('#'+id))$('#'+id).value=state[id];}if(window.__studioRefReady){requestScoreRefresh();if(typeof fineRefresh==='function')fineRefresh();}}
 function addNote(midi=60,start=null,dur=null){const tr=currentTrack();if(!tr)return;if(tr.type==='drums')midi=DRUM_NAMES[midi]?midi:36;const last=tr.notes.reduce((a,n)=>Math.max(a,n.start+n.dur),0),snap=+state.snap;const n={id:uid(),midi,start:start??Math.round(last/snap)*snap,dur:dur??Math.max(.001,snap),vel:.75};tr.notes.push(n);state.selectedNote=n.id;renderAll();scrollNoteIntoView(n);saveSilent()}
 function scrollNoteIntoView(n){requestAnimationFrame(()=>{const [lo,hi]=range(),wrap=$('#rollWrap');wrap.scrollLeft=Math.max(0,n.start*CELL_W-140);wrap.scrollTop=Math.max(0,(hi-n.midi)*CELL_H-100)})}
 async function playWebAudio(fromBeat=0){
@@ -1593,11 +1695,11 @@ function scorePositionFocus(beat){const bb=studioBarBeats();scoreCursor=Math.max
 function studioOpenDetail(trackId,noteId){
  if(trackId)scoreSelectTrack(trackId,noteId);
  const note=noteId?currentTrack()?.notes.find(n=>n.id===noteId):currentNote();if(note)scorePositionFocus(note.start);
- scoreCollapsed=true;$('#editorCard').classList.add('workbenchMode');
+ scoreCollapsed=true;$('#editorCard').classList.add('workbenchMode');document.body.classList.add('detailActive');document.body.classList.remove('showTracks');
  requestScoreRefresh();
  requestAnimationFrame(()=>{const target=$('#editorTop');target?.scrollIntoView({behavior:'smooth',block:'start'});if(note)scrollNoteIntoView(note);});
 }
-function studioReturnScore(){scoreCollapsed=false;$('#editorCard').classList.remove('workbenchMode');requestScoreRefresh();requestAnimationFrame(()=>$('#scoreDesk')?.scrollIntoView({behavior:'smooth',block:'start'}));}
+function studioReturnScore(){scoreCollapsed=false;$('#editorCard').classList.remove('workbenchMode');document.body.classList.remove('detailActive','showTracks');requestScoreRefresh();requestAnimationFrame(()=>$('#scoreDesk')?.scrollIntoView({behavior:'smooth',block:'start'}));}
 function arrangementRender(){const holder=$('#arrangementRows');if(!holder)return;
  const bb=studioBarBeats(),from=scorePage*8*bb,to=from+8*bb,unit=960/(bb*8),tr=currentTrack(),selected=state.selectedNote;
  $('#lanePageLabel').textContent=`${scorePage*8+1}〜${(scorePage+1)*8}小節`;
@@ -1639,6 +1741,8 @@ function renderVelocityLane(){const surface=$('#velocitySurface'),tr=currentTrac
 }
 function initWorkbench(){
  $('#scoreOpenDetail').onclick=()=>studioOpenDetail(state.selectedTrack,state.selectedNote);
+ $('#workbenchTracks').onclick=()=>{const on=document.body.classList.toggle('showTracks');$('#workbenchTracks').textContent=on?'☷ トラック一覧を隠す':'☷ トラック管理';if(on)requestAnimationFrame(()=>$('#tracksCard')?.scrollIntoView({behavior:'smooth',block:'start'}));};
+ $('#editTrackQuick').onchange=e=>{scoreSelectTrack(e.target.value);};
  $('#workbenchBack').onclick=studioReturnScore;$('#lanePlayLead').onclick=()=>$('#playLeadRef').click();$('#lanePlayPitch').onclick=()=>$('#playRefPitch').click();$('#lanePlayFrom').onclick=()=>play(scoreCursor);$('#laneToggle').onclick=()=>{const board=$('#laneBoard'),collapsed=board.classList.toggle('laneCollapsed');$('#laneToggle').textContent=collapsed?'時間軸を開く':'時間軸を畳む';$('#laneToggle').setAttribute('aria-expanded',String(!collapsed));};
  $('#cursorToRoll').onclick=()=>{const wrap=$('#rollWrap'),n=currentNote();if(n)scrollNoteIntoView(n);else if(wrap)wrap.scrollLeft=Math.max(0,scoreCursor*CELL_W-120);};
  for(const [id,dir] of [['lanePrev',-1],['laneNext',1]])$('#'+id).onclick=()=>{scorePage=Math.max(0,Math.min(224,scorePage+dir));scoreCursor=scorePage*studioBarBeats()*8;requestScoreRefresh()};
@@ -1656,6 +1760,89 @@ function initWorkbench(){
  velocity.addEventListener('pointermove',e=>{if(!velocityDrag||velocityDrag.id!==e.pointerId)return;e.preventDefault();const delta=(velocityDrag.startY-e.clientY)/106,level=clamp(velocityDrag.initial+delta,.05,1);velocityDrag.note.vel=Math.round(level*100)/100;velocityDrag.bar.style.height=(velocityDrag.note.vel*106)+'px';velocityDrag.bar.title=`強さ ${Math.round(velocityDrag.note.vel*100)}%`;$('#velocityStats').textContent=`選択音の強さ：${Math.round(velocityDrag.note.vel*100)}%`;renderNotePanel();},{passive:false});
  velocity.addEventListener('pointerup',finishVelocity);velocity.addEventListener('pointercancel',e=>{if(velocityDrag&&velocityDrag.id===e.pointerId){velocityDrag.note.vel=velocityDrag.initial;velocityDrag=null;renderVelocityLane();}});
  $('#ghostMode').onchange=()=>renderRoll();
+}
+// Studio 4.4: touch-first note selection is separate from note editing.
+let touchToolMode='pick';
+function syncTouchToolbar(){
+ const wrap=$('#rollWrap');if(!wrap)return;
+ wrap.classList.toggle('panTool',touchToolMode==='pan');wrap.classList.toggle('addTool',touchToolMode==='add');
+ for(const [id,mode] of [['toolPick','pick'],['toolPan','pan'],['toolAdd','add']]){const el=$('#'+id);if(!el)continue;el.classList.toggle('toolOn',mode===touchToolMode);el.setAttribute('aria-pressed',String(mode===touchToolMode));}
+ const checked=$('#ghostNotes')?.checked,mode=$('#ghostMode')?.value;
+ for(const [id,active] of [['vocalFocusBtn',checked&&mode==='vocal-selected'],['allPartsGhostBtn',checked&&mode==='all'],['ghostNoneBtn',!checked]]){const el=$('#'+id);if(el){el.classList.toggle('presetOn',!!active);el.setAttribute('aria-pressed',String(!!active));}}
+}
+function focusSelectedNote(n){if(!n)return;setNoteSelection([n.id]);scrollNoteIntoView(n);scorePositionFocus(n.start);}
+// Directions select another existing note, without altering a single note property.
+function navigateToAdjacentNote(direction){
+ const notes=currentTrack()?.notes||[];if(!notes.length)return toast('このパートにはまだ音がありません');
+ const n=currentNote();if(!n){const first=[...notes].sort((a,b)=>a.start-b.start||b.midi-a.midi)[0];focusSelectedNote(first);return;}
+ const eps=1e-6;
+ const candidates=notes.filter(t=>t.id!==n.id&&(
+  direction==='right'?t.start>n.start+eps:
+  direction==='left'?t.start<n.start-eps:
+  direction==='up'?t.midi>n.midi:
+  t.midi<n.midi
+ ));
+ if(!candidates.length){toast('その方向に音符はありません');return;}
+ candidates.sort((a,b)=>{
+  const score=t=>direction==='right'||direction==='left'?
+   Math.abs(t.start-n.start)*100+Math.abs(t.midi-n.midi)*.1:
+   Math.abs(t.midi-n.midi)*100+Math.abs(t.start-n.start)*.1;
+  return score(a)-score(b)||a.start-b.start||a.midi-b.midi;
+ });
+ focusSelectedNote(candidates[0]);
+}
+// When MIDI pitch and timing overlap, allow cycling with no need to tap a tiny hidden rectangle.
+function cycleOverlappingNote(){
+ const notes=currentTrack()?.notes||[];if(!notes.length)return toast('音符がありません');
+ const n=currentNote();if(!n){focusSelectedNote([...notes].sort((a,b)=>a.start-b.start)[0]);return;}
+ const ends=t=>t.start+(t.dur||.001),overlaps=t=>t.start<ends(n)-1e-8&&ends(t)>n.start+1e-8;
+ const samePitch=notes.filter(t=>t.midi===n.midi&&overlaps(t));
+ const candidates=(samePitch.length>1?samePitch:notes.filter(overlaps)).slice().sort((a,b)=>a.start-b.start||a.midi-b.midi||a.id.localeCompare(b.id));
+ if(candidates.length<2){toast('この位置に重なった別の音符はありません');return;}
+ const index=candidates.findIndex(t=>t.id===n.id);focusSelectedNote(candidates[(index+1+candidates.length)%candidates.length]);
+}
+function nudgeSelectedNote(direction){
+ const chosen=selectedNotes();if(!chosen.length)return toast('音を選択してください');
+ const step=+state.snap||.25;
+ const originals=chosen.map(note=>({note,start:note.start,midi:note.midi,dur:note.dur}));
+ const dx=direction==='right'?step:direction==='left'?-step:0;
+ const dy=direction==='up'?-1:direction==='down'?1:0;
+ moveNoteGroup(originals,dx,dy);
+ const changed=originals.some(o=>o.note.start!==o.start||o.note.midi!==o.midi);
+ if(changed){renderRoll();renderNotePanel();saveSilent();requestScoreRefresh();}else toast('音程・位置の端です');
+}
+function renderTouchSelectedStatus(){
+ const quick=$('#editTrackQuick');if(quick){const ids=state.tracks.map(t=>t.id).join('|');if(quick.dataset.signature!==ids){quick.innerHTML=state.tracks.map(t=>`<option value="${t.id}">${escapeHTML(t.name)}</option>`).join('');quick.dataset.signature=ids;}quick.value=state.selectedTrack||'';}
+ const el=$('#touchNoteStatus');if(!el)return;
+ const n=currentNote(),tr=currentTrack();el.textContent=n?`${tr?.type==='drums'?(DRUM_NAMES[n.midi]||'ドラム'):midiLabel(n.midi)} · ${+n.start.toFixed(3)}拍`:'音符を選択してください';
+ const help=$('#touchNavHint');if(help)help.textContent=n?`長さ ${+n.dur.toFixed(3)}拍 / 強さ ${Math.round((n.vel??.75)*100)}% / ${selectedNotes().length}音選択中`:'①で選択 → ②で細かく移動 / ◎は重なった音の切替';
+ for(const id of ['touchPreview','touchPlayFrom','touchRemove']){const btn=$('#'+id);if(btn)btn.disabled=!n;}
+}
+function initTouchWorkbench(){
+ for(const [id,mode] of [['toolPick','pick'],['toolPan','pan'],['toolAdd','add']])$('#'+id).onclick=()=>{touchToolMode=mode;if(selectionMode&&mode!=='pick')$('#multiSelectBtn').click();syncTouchToolbar();};
+ for(const id of ['vocalFocusBtn','allPartsGhostBtn','ghostNoneBtn'])$('#'+id).onclick=()=>{
+  const isOff=id==='ghostNoneBtn';$('#ghostNotes').checked=!isOff;if(!isOff)$('#ghostMode').value=id==='allPartsGhostBtn'?'all':'vocal-selected';syncTouchToolbar();renderRoll();
+ };
+ for(const btn of document.querySelectorAll('[data-note-select]'))btn.onclick=()=>navigateToAdjacentNote(btn.dataset.noteSelect);
+ for(const btn of document.querySelectorAll('[data-note-nudge]'))btn.onclick=()=>nudgeSelectedNote(btn.dataset.noteNudge);
+ $('#cycleOverlaps').onclick=cycleOverlappingNote;
+ $('#touchPreview').onclick=()=>$('#previewNote').click();
+ $('#touchPlayFrom').onclick=()=>$('#playFromSelectedBtn').click();
+ $('#touchRemove').onclick=deleteSelectedNotes;
+ const step=$('#touchStep');step.value=String(state.snap||.25);step.onchange=e=>{const val=+e.target.value;state.snap=val;$('#snap').value=String(val);saveSilent();};
+ $('#snap').addEventListener('change',()=>{step.value=$('#snap').value;});
+ const wrap=$('#rollWrap');let begin=null;
+ wrap.addEventListener('pointerdown',e=>{if(touchToolMode!=='add'||e.target.closest('.note,.keys'))return;begin={id:e.pointerId,x:e.clientX,y:e.clientY,serial:pinchSerial};},{passive:true});
+ wrap.addEventListener('pointerup',e=>{if(!begin||touchToolMode!=='add'||begin.id!==e.pointerId)return;
+  const was=begin;begin=null;if(pinchActive||pinchSerial!==was.serial||Math.hypot(e.clientX-was.x,e.clientY-was.y)>12)return;
+  addNoteAtGridPoint(e.clientX,e.clientY);
+ });
+ wrap.addEventListener('pointercancel',()=>{begin=null;});
+ $('#ghostNotes').addEventListener('change',syncTouchToolbar);
+ $('#ghostMode').addEventListener('change',syncTouchToolbar);
+ syncTouchToolbar();renderTouchSelectedStatus();
+ // Start with overview closed so it cannot cover the editor on an iPad.
+ const board=$('#laneBoard');board.classList.add('laneCollapsed');$('#laneToggle').textContent='☷ 時間軸を開く';$('#laneToggle').setAttribute('aria-expanded','false');
 }
 // v4.2 precise, undoable note and non-destructive vocal-clip tools.
 let fineClipboard=[];
@@ -1732,7 +1919,7 @@ $('#studioMixer').addEventListener('change',e=>{const t=e.target;
 // Start after existing project restore; leave 3.x IndexedDB keys untouched for migration.
 studioInitEvents();
 studioReferenceEvents();
-initWorkbench();
+initWorkbench();initTouchWorkbench();
 fineInit();
 // Project recovery calls studioRender() after IndexedDB restoration completes.
 studioRender();vaultRefresh();
